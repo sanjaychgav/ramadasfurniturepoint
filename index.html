@@ -7,682 +7,185 @@
   <meta name="description" content="Elegant sofas, cots, dining, wardrobes & custom furniture. Visit Ramadas Furniture Point in Vepagunta, Visakhapatnam for quality craftsmanship.">
   <meta name="theme-color" content="#0a0b0f">
   <meta name="color-scheme" content="dark">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛋️</text></svg>">
+  <meta property="og:title" content="Ramadas Furniture Point — Premium Furniture in Vepagunta, Visakhapatnam">
+  <meta property="og:description" content="Sofas, cots, dining, wardrobes & custom furniture. Quality craftsmanship.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🛋️&lt;/text&gt;&lt;/svg&gt;">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* ====== Enhanced Design System ====== */
+    /* =========================
+       Design Tokens
+       ========================= */
     :root {
       --accent: #39ff88;
-      --accent-dark: #2dd670;
-      --glow: #00f0ff;
+      --accent-2: #00f0ff;
       --bg: #0a0b0f;
-      --bg-elevated: #0f1117;
+      --bg-elev: #0f1117;
       --card: #131820;
       --card-hover: #1a1f2a;
       --ink: #e6e9ef;
-      --ink-secondary: #b8bfc9;
+      --ink-2: #b8bfc9;
       --muted: #9aa1ad;
       --line: #1a1d26;
-      --line-strong: #2b2f3a;
-      --header-h: 80px;
-      --radius-sm: 12px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --line-2: #2b2f3a;
+      --h: 74px; /* header height */
+      --r-sm: 12px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
+      --shadow-md: 0 6px 20px rgba(0,0,0,.35);
+      --shadow-lg: 0 14px 40px rgba(0,0,0,.45);
+      --ease: cubic-bezier(.4,0,.2,1);
+      --gap: 24px;
+      --container: 1280px;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    @media (prefers-color-scheme: light) {
+      :root { color-scheme: dark light; }
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: calc(var(--header-h) + 24px);
-    }
-
+    /* Reset + base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       font: 400 16px/1.6 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--ink);
-      background: 
-        radial-gradient(80vw 80vh at 15% -10%, rgba(57, 255, 136, 0.06), transparent 70%),
-        radial-gradient(60vw 70vh at 85% -15%, rgba(0, 240, 255, 0.05), transparent 70%),
+      background:
+        radial-gradient(80vw 80vh at 15% -10%, rgba(57,255,136,.06), transparent 70%),
+        radial-gradient(60vw 70vh at 85% -15%, rgba(0,240,255,.05), transparent 70%),
         var(--bg);
       background-attachment: fixed;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Typography */
     .h1, .h2, .h3 {
       font-family: 'Playfair Display', Georgia, serif;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      font-weight: 700;
+      line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
     }
+    .h1 { font-size: clamp(32px, 4vw, 56px); margin: 0 0 12px; }
+    .h2 { font-size: clamp(26px, 3vw, 42px); margin: 0 0 8px; }
+    .h3 { font-size: clamp(20px, 2.2vw, 28px); margin: 0; }
+    .body-lg { font-size: 18px; line-height: 1.7; }
+    .subdued { color: var(--muted); }
 
-    .h1 {
-      font-size: clamp(32px, 4vw, 56px);
-      margin: 0 0 12px;
-    }
+    /* Layout helpers */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+    .section { padding: clamp(56px, 7vw, 80px) 0; position: relative; }
+    .grid { display: grid; gap: var(--gap); }
+    .grid-auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+    .grid-2 { grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
-    .h2 {
-      font-size: clamp(26px, 3vw, 42px);
-      margin: 0 0 8px;
-    }
+    /* Buttons */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 20px; border:1px solid transparent; border-radius:var(--r-md); font-weight:600; font-size:15px; text-decoration:none; white-space:nowrap; transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease); cursor:pointer; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #2dd670); color:#000; border-color: var(--accent); box-shadow: 0 0 24px rgba(57,255,136,.25);} 
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(57,255,136,.35);} 
+    .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(255,255,255,.15); }
+    .btn-ghost:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.3); }
+    .btn-secondary { background: var(--bg-elev); color: var(--ink); border-color: var(--line-2); }
+    .btn-secondary:hover { background: var(--card); border-color: var(--accent); }
+    .btn-group { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
 
-    .h3 {
-      font-size: clamp(20px, 2.2vw, 28px);
-      margin: 0;
-    }
+    /* Badges */
+    .badge { display:inline-flex; padding:6px 14px; border:1px solid var(--line-2); border-radius:999px; font-size:13px; font-weight:600; letter-spacing:.05em; color: var(--accent); text-transform:uppercase; margin-bottom:16px; }
 
-    .body-large {
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .subdued {
-      color: var(--muted);
-    }
-
-    /* Layout */
-    .page-width {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .section {
-      position: relative;
-      padding: 80px 0;
-    }
-
-    .section--hero {
-      padding: 0;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        padding: 56px 0;
-      }
-    }
-
-    /* Grid System */
-    .grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .grid--2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .grid--3 {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-
-    @media (min-width: 900px) {
-      .grid--2-cols {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    /* Button System */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border: 1px solid transparent;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      transition: var(--transition);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn--primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: #000;
-      border-color: var(--accent);
-      box-shadow: 0 0 30px rgba(57, 255, 136, 0.3);
-    }
-
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 40px rgba(57, 255, 136, 0.4);
-    }
-
-    .btn--secondary {
-      background: var(--bg-elevated);
-      color: var(--ink);
-      border-color: var(--line-strong);
-    }
-
-    .btn--secondary:hover {
-      background: var(--card);
-      border-color: var(--accent);
-    }
-
-    .btn--ghost {
-      background: transparent;
-      color: var(--ink);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .btn--ghost:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    /* Badge */
-    .badge {
-      display: inline-flex;
-      padding: 6px 14px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    /* Card System */
-    .card {
-      background: linear-gradient(180deg, var(--card), var(--bg-elevated));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: var(--transition);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--line-strong);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .card__media {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-
-    .card:hover .card__media {
-      transform: scale(1.05);
-    }
-
-    .card__content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card__title {
-      font-size: 19px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .card__description {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: auto;
-    }
-
-    .card--feature {
-      padding: 28px;
-    }
+    /* Cards */
+    .card { background: linear-gradient(180deg, var(--card), var(--bg-elev)); border:1px solid var(--line); border-radius: var(--r-lg); overflow:hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease); height:100%; display:flex; flex-direction:column; }
+    .card:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: var(--shadow-lg); }
+    .card-media { width:100%; height:260px; object-fit:cover; display:block; transition: transform .6s ease; }
+    .card:hover .card-media { transform: scale(1.05); }
+    .card-body { padding:20px; display:flex; flex-direction:column; gap:8px; }
+    .card-title { font-size:19px; font-weight:700; color:var(--ink); }
+    .card-desc { color:var(--muted); font-size:14px; margin-top:auto; }
 
     /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: saturate(180%) blur(20px);
-      background: rgba(10, 11, 15, 0.8);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    }
+    .header { position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(180%) blur(16px); background: rgba(10,11,15,.78); border-bottom:1px solid var(--line); box-shadow: var(--shadow-sm); }
+    .bar { height: var(--h); display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; }
+    .brand:hover { opacity:.9; }
+    .logo { width:44px; height:44px; border-radius:50%; background: radial-gradient(circle at 30% 30%, var(--accent), #0f0); display:grid; place-items:center; font-weight:800; font-size:24px; color:#000; box-shadow: 0 0 20px rgba(57,255,136,.35); }
+    .brand-name { font-family:'Playfair Display', Georgia, serif; font-size:18px; font-weight:800; line-height:1.2; }
+    .brand-tag { font-size:12px; color: var(--muted); margin-top:2px; }
 
-    .header__bar {
-      height: var(--header-h);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+    .nav { display:none; gap:4px; }
+    .nav a { color: var(--ink-2); text-decoration:none; padding:10px 14px; border-radius: var(--r-sm); font-weight:600; font-size:15px; transition: background .2s var(--ease), color .2s var(--ease); }
+    .nav a:hover { color: var(--ink); background: rgba(255,255,255,.05); }
+    .nav a[aria-current="true"] { color: var(--accent); background: rgba(57,255,136,.1); }
+    .hdr-actions { display:flex; align-items:center; gap:8px; }
+    .menu-btn { background: transparent; border: 1px solid var(--line-2); color: var(--ink); padding: 10px 14px; border-radius: var(--r-sm); cursor:pointer; }
+    .menu-btn:hover { border-color: var(--accent); }
 
-    /* Brand */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #fff;
-      transition: opacity 0.2s ease;
-    }
+    @media (min-width: 900px){ .nav{display:flex} .menu-btn{display:none} }
 
-    .brand:hover {
-      opacity: 0.9;
-    }
-
-    .brand__logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, var(--accent), #0f0);
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 24px;
-      color: #000;
-      box-shadow: 0 0 20px rgba(57, 255, 136, 0.4);
-    }
-
-    .brand__name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .brand__tagline {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* Navigation */
-    .nav {
-      display: none;
-      gap: 4px;
-    }
-
-    .nav__link {
-      color: var(--ink-secondary);
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
-      font-size: 15px;
-      transition: var(--transition);
-    }
-
-    .nav__link:hover {
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav__link.active {
-      color: var(--accent);
-      background: rgba(57, 255, 136, 0.1);
-    }
-
-    @media (min-width: 900px) {
-      .nav {
-        display: flex;
-      }
-      .header__mobile-toggle {
-        display: none;
-      }
-    }
-
-    .header__actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header__mobile-toggle {
-      background: transparent;
-      border: 1px solid var(--line-strong);
-      color: var(--ink);
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .header__mobile-toggle:hover {
-      border-color: var(--accent);
-    }
-
-    .mobile-nav {
-      padding: 16px;
-    }
-
-    .mobile-nav[hidden] {
-      display: none;
-    }
-
-    .mobile-nav__menu {
-      background: var(--card);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-lg);
-      padding: 8px;
-    }
-
-    .mobile-nav__link {
-      display: block;
-      padding: 14px 16px;
-      color: var(--ink);
-      text-decoration: none;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-    }
-
-    .mobile-nav__link:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .mobile-nav__actions {
-      display: flex;
-      gap: 8px;
-      padding: 12px;
-      border-top: 1px solid var(--line);
-      margin-top: 8px;
-    }
+    .mnav { padding: 12px 16px; }
+    .mnav[hidden] { display:none; }
+    .mnav-menu { background: var(--card); border: 1px solid var(--line-2); border-radius: var(--r-lg); padding: 8px; }
+    .mnav a { display:block; padding:14px 16px; color: var(--ink); text-decoration:none; border-radius: var(--r-sm); }
+    .mnav a:hover { background: rgba(255,255,255,.05); }
+    .mnav-actions { display:flex; gap:8px; padding:12px; border-top:1px solid var(--line); margin-top:8px; }
 
     /* Hero */
-    .hero {
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      isolation: isolate;
-      padding: 120px 0 80px;
-    }
+    .hero { min-height: 70svh; display:flex; align-items:center; position:relative; isolation:isolate; padding: clamp(100px, 12vw, 140px) 0 72px; }
+    .hero-bg { position:absolute; inset:0; z-index:-2; background-image:url('./assets/background.jpg?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center; }
+    .hero-ov { position:absolute; inset:0; z-index:-1; background: linear-gradient(135deg, rgba(0,0,0,.7), rgba(10,11,15,.4), transparent); }
+    .hero-box { max-width: 720px; background: rgba(15,17,23,.82); border:1px solid var(--line-2); border-radius: var(--r-lg); padding: clamp(24px, 4vw, 40px); backdrop-filter: blur(12px); box-shadow: var(--shadow-lg); }
 
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background-image: url('./assets/background.jpg?q=80&w=1600&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-    }
+    /* Section header */
+    .sect-head { max-width: 800px; margin: 0 0 36px; }
+    .sect-sub { color: var(--muted); margin-top: 12px; font-size: 17px; line-height: 1.7; }
 
-    .hero__overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(10, 11, 15, 0.4), transparent);
-    }
+    /* Collections */
+    .collections { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
 
-    .hero__content {
-      max-width: 720px;
-      background: rgba(15, 17, 23, 0.85);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow-lg);
-    }
+    /* About */
+    .about-img { border-radius: var(--r-lg); inline-size: 100%; block-size: clamp(280px, 45vw, 420px); object-fit: cover; box-shadow: var(--shadow-md); }
+    .about-list { list-style:none; margin:20px 0; padding:0; }
+    .about-item { position:relative; padding:12px 0 12px 28px; color: var(--ink-2); }
+    .about-item::before { content: "✓"; position:absolute; inset-inline-start:0; color: var(--accent); font-weight:800; }
 
-    @media (max-width: 768px) {
-      .hero {
-        min-height: 65vh;
-        padding: 100px 0 60px;
-      }
-      .hero__content {
-        padding: 28px;
-      }
-    }
-
-    /* Section Headers */
-    .section-header {
-      max-width: 800px;
-      margin-bottom: 48px;
-    }
-
-    .section-header__subtitle {
-      color: var(--muted);
-      margin-top: 12px;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    /* Collections Grid */
-    .collections-grid {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-
-    @media (max-width: 768px) {
-      .collections-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* About Section */
-    .about-grid {
-      align-items: center;
-    }
-
-    .about__image {
-      border-radius: var(--radius-lg);
-      height: 420px;
-      object-fit: cover;
-      box-shadow: var(--shadow-md);
-    }
-
-    .about__list {
-      list-style: none;
-      margin: 20px 0;
-      padding: 0;
-    }
-
-    .about__list-item {
-      padding: 12px 0;
-      padding-left: 28px;
-      position: relative;
-      color: var(--ink-secondary);
-    }
-
-    .about__list-item::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    /* Info Cards */
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: var(--transition);
-    }
-
-    .info-card:hover {
-      border-color: var(--line-strong);
-      background: var(--card-hover);
-    }
-
-    .info-card__title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-
-    .info-card__text {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .info-card__list {
-      list-style: none;
-      margin: 16px 0 0;
-      padding: 0;
-    }
-
-    .info-card__list-item {
-      padding: 10px 0;
-      color: var(--ink-secondary);
-    }
-
-    .info-card__list-item a {
-      color: var(--ink);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .info-card__list-item a:hover {
-      color: var(--accent);
-    }
+    /* Info cards */
+    .info { background: var(--card); border:1px solid var(--line); border-radius: var(--r-lg); padding: 24px; transition: background .25s var(--ease), border-color .25s var(--ease); }
+    .info:hover { border-color: var(--line-2); background: var(--card-hover); }
+    .info-title { font-size:20px; font-weight:700; margin-bottom: 10px; color: var(--ink); }
+    .info-text { color: var(--muted); line-height: 1.7; }
 
     /* Footer */
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 60px 0 32px;
-      margin-top: 80px;
-    }
+    .footer { border-top:1px solid var(--line); padding: 56px 0 32px; margin-top: 64px; }
+    .fgrid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 32px; margin-bottom: 32px; }
+    .f-title { font-size:18px; font-weight:700; margin-bottom: 10px; color: var(--ink); }
+    .f-brand { font-family:'Playfair Display', Georgia, serif; font-size:24px; font-weight:800; margin-bottom:8px; }
+    .flist { list-style:none; margin:0; padding:0; }
+    .flist li { padding:8px 0; }
+    .flink { color: var(--ink-2); text-decoration:none; }
+    .flink:hover { color: var(--accent); }
+    .copy { text-align:center; color: var(--muted); font-size: 14px; padding-top: 24px; border-top:1px solid var(--line); }
 
-    .footer__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
+    /* Stars (decor only) */
+    .stars{ position:fixed; inset:0; pointer-events:none; background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.3), transparent), radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.25), transparent), radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.2), transparent), radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,.25), transparent); background-size:250% 250%; animation: twinkle 12s linear infinite; z-index:0; }
+    @keyframes twinkle { 0%,100%{opacity:.6} 50%{opacity:1} }
 
-    .footer__section-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: var(--ink);
-    }
+    /* Reveal animation */
+    .reveal { opacity:0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.show { opacity:1; transform:none; }
 
-    .footer__brand-name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+    /* Map */
+    .map-wrap { margin-top: 12px; border-radius: var(--r-lg); overflow:hidden; border:1px solid var(--line); background: var(--card); box-shadow: var(--shadow-md); }
+    .map-wrap iframe { width:100%; aspect-ratio: 16/9; border:0; display:block; }
 
-    .footer__list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+    /* Utilities */
+    .text-center{ text-align:center; }
 
-    .footer__list-item {
-      padding: 8px 0;
-    }
-
-    .footer__link {
-      color: var(--ink-secondary);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer__link:hover {
-      color: var(--accent);
-    }
-
-    .footer__copyright {
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      padding-top: 32px;
-      border-top: 1px solid var(--line);
-    }
-
-    /* Starfield Animation */
-    .stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 70% 60%, rgba(255, 255, 255, 0.25), transparent),
-        radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.2), transparent),
-        radial-gradient(1px 1px at 90% 20%, rgba(255, 255, 255, 0.25), transparent);
-      background-size: 250% 250%;
-      animation: starTwinkle 12s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes starTwinkle {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-
-    /* Reveal Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Accessibility & Reduced Motion */
+    /* A11y */
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset:2px; }
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-      .stars {
-        animation: none;
-      }
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+      html { scroll-behavior: auto; }
+      .reveal { opacity:1; transform:none; transition:none; }
+      .stars { animation: none; }
+      * { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     }
-
-    /* Focus Styles */
-    *:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    /* Utility Classes */
-    .text-center {
-      text-align: center;
-    }
-
-    .mt-sm { margin-top: 16px; }
-    .mt-md { margin-top: 24px; }
-    .mt-lg { margin-top: 32px; }
   </style>
 </head>
 <body>
@@ -690,57 +193,54 @@
 
   <!-- Header -->
   <header class="header" role="banner">
-    <div class="page-width header__bar">
+    <div class="container bar">
       <a class="brand" href="#home" aria-label="Ramadas Furniture Point Home">
-        <div class="brand__logo" aria-hidden="true">R</div>
-        <div class="brand__meta">
-          <div class="brand__name">Ramadas Furniture Point</div>
-          <div class="brand__tagline">Fine furniture • Custom builds</div>
+        <div class="logo" aria-hidden="true">R</div>
+        <div>
+          <div class="brand-name">Ramadas Furniture Point</div>
+          <div class="brand-tag">Fine furniture • Custom builds</div>
         </div>
       </a>
-
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#collections" class="nav__link">Collections</a>
-        <a href="#about" class="nav__link">About</a>
-        <a href="#visit" class="nav__link">Visit</a>
-        <a href="#contact" class="nav__link">Contact</a>
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Contact</a>
       </nav>
-
-      <div class="header__actions">
-        <a class="btn btn--ghost" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">WhatsApp</a>
-        <a class="btn btn--primary" href="tel:+918978331333">Call Now</a>
-        <button class="header__mobile-toggle" data-menu-toggle aria-label="Toggle navigation menu" aria-expanded="false">Menu</button>
+      <div class="hdr-actions">
+        <a class="btn btn-ghost" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">WhatsApp</a>
+        <a class="btn btn-primary" href="tel:+918978331333">Call Now</a>
+        <button class="menu-btn" data-menu aria-label="Toggle navigation menu" aria-expanded="false">Menu</button>
       </div>
     </div>
-
-    <nav class="mobile-nav" data-mobile hidden aria-label="Mobile navigation">
-      <div class="mobile-nav__menu">
-        <a href="#collections" class="mobile-nav__link">Collections</a>
-        <a href="#about" class="mobile-nav__link">About</a>
-        <a href="#visit" class="mobile-nav__link">Visit</a>
-        <a href="#contact" class="mobile-nav__link">Contact</a>
-        <div class="mobile-nav__actions">
-          <a class="btn btn--secondary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Directions</a>
-          <a class="btn btn--secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram</a>
+    <nav class="mnav" data-mnav hidden aria-label="Mobile navigation">
+      <div class="mnav-menu">
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Contact</a>
+        <div class="mnav-actions">
+          <a class="btn btn-secondary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Directions</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="section section--hero hero">
-    <div class="hero__bg"></div>
-    <div class="hero__overlay"></div>
-    <div class="page-width">
-      <div class="hero__content reveal">
+  <section id="home" class="section hero" aria-label="Hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-ov" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-box reveal">
         <div class="badge">Vepagunta • Visakhapatnam</div>
         <h1 class="h1">Where craftsmanship meets comfort.</h1>
-        <p class="subdued body-large">Explore sofas, cots, dining, wardrobes and bespoke pieces — curated for modern Indian homes.</p>
+        <p class="subdued body-lg">Explore sofas, cots, dining, wardrobes and bespoke pieces — curated for modern Indian homes.</p>
         <div class="btn-group">
-          <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="btn btn--primary">Get Directions</a>
-          <a href="tel:+918978331333" class="btn btn--secondary">Call Now</a>
-          <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" class="btn btn--secondary">WhatsApp Us</a>
-          <a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="btn btn--secondary">Instagram</a>
+          <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+          <a href="tel:+918978331333" class="btn btn-secondary">Call Now</a>
+          <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp Us</a>
+          <a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="btn btn-secondary">Instagram</a>
         </div>
       </div>
     </div>
@@ -748,45 +248,45 @@
 
   <!-- Collections -->
   <section id="collections" class="section" aria-labelledby="collections-title">
-    <div class="page-width">
-      <div class="section-header reveal">
+    <div class="container">
+      <div class="sect-head reveal">
         <h2 class="h2" id="collections-title">Collections</h2>
-        <p class="section-header__subtitle">Popular categories available ready-to-ship and custom-made.</p>
+        <p class="sect-sub">Popular categories available ready-to-ship and custom-made.</p>
       </div>
-      <div class="grid collections-grid">
+      <div class="grid collections">
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank" rel="noopener">
-          <img loading="lazy" class="card__media" src="./assets/sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern sofas and recliners" width="400" height="260">
-          <div class="card__content">
-            <h3 class="card__title">Sofas & Recliners</h3>
-            <p class="card__description">Fabric • Leatherette • L-shaped • Recliners</p>
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern sofas and recliners" width="1200" height="800">
+          <div class="card-body">
+            <h3 class="card-title">Sofas & Recliners</h3>
+            <p class="card-desc">Fabric • Leatherette • L-shaped • Recliners</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank" rel="noopener">
-          <img loading="lazy" class="card__media" src="./assets/cot.jpg?q=80&w=1200&auto=format&fit=crop" alt="Elegant beds and cots" width="400" height="260">
-          <div class="card__content">
-            <h3 class="card__title">Cots & Mattresses</h3>
-            <p class="card__description">King • Queen • Storage • Orthopedic</p>
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/cot.jpg?q=80&w=1200&auto=format&fit=crop" alt="Elegant beds and cots" width="1200" height="800">
+          <div class="card-body">
+            <h3 class="card-title">Cots & Mattresses</h3>
+            <p class="card-desc">King • Queen • Storage • Orthopedic</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank" rel="noopener">
-          <img loading="lazy" class="card__media" src="./assets/dining.jpg?q=80&w=1200&auto=format&fit=crop" alt="Dining tables and chairs" width="400" height="260">
-          <div class="card__content">
-            <h3 class="card__title">Dining & Chairs</h3>
-            <p class="card__description">4/6/8-seater • Solid wood • Modern</p>
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/dining.jpg?q=80&w=1200&auto=format&fit=crop" alt="Dining tables and chairs" width="1200" height="800">
+          <div class="card-body">
+            <h3 class="card-title">Dining & Chairs</h3>
+            <p class="card-desc">4/6/8-seater • Solid wood • Modern</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank" rel="noopener">
-          <img loading="lazy" class="card__media" src="./assets/tv-unit.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern TV units" width="400" height="260">
-          <div class="card__content">
-            <h3 class="card__title">TV Units & Storage</h3>
-            <p class="card__description">Wall units • Console • Shelving</p>
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/tv-unit.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern TV units" width="1200" height="800">
+          <div class="card-body">
+            <h3 class="card-title">TV Units & Storage</h3>
+            <p class="card-desc">Wall units • Console • Shelving</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank" rel="noopener">
-          <img loading="lazy" class="card__media" src="./assets/custom-sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Custom furniture designs" width="400" height="260">
-          <div class="card__content">
-            <h3 class="card__title">Custom Builds</h3>
-            <p class="card__description">Made-to-size • Finish of choice</p>
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/custom-sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Custom furniture designs" width="1200" height="800">
+          <div class="card-body">
+            <h3 class="card-title">Custom Builds</h3>
+            <p class="card-desc">Made-to-size • Finish of choice</p>
           </div>
         </a>
       </div>
@@ -795,26 +295,24 @@
 
   <!-- About -->
   <section id="about" class="section" aria-labelledby="about-title">
-    <div class="page-width">
-      <div class="grid grid--2-cols about-grid">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center">
         <div class="reveal">
           <h2 class="h2" id="about-title">About Us</h2>
-          <p class="subdued mt-sm">
-            At Ramadas Furniture Point, we blend solid craftsmanship with practical comfort. From ready stock to bespoke projects, we guide you on materials, finishes, and durability, and offer hassle-free delivery and installation.
-          </p>
-          <ul class="about__list">
-            <li class="about__list-item">Expert guidance on wood, laminates, and fabrics</li>
-            <li class="about__list-item">On-time delivery & installation</li>
-            <li class="about__list-item">After-sales support & warranty assistance</li>
-            <li class="about__list-item">Custom designs tailored to your space</li>
+          <p class="subdued" style="margin-top:12px">At Ramadas Furniture Point, we blend solid craftsmanship with practical comfort. From ready stock to bespoke projects, we guide you on materials, finishes, and durability, and offer hassle-free delivery and installation.</p>
+          <ul class="about-list">
+            <li class="about-item">Expert guidance on wood, laminates, and fabrics</li>
+            <li class="about-item">On-time delivery & installation</li>
+            <li class="about-item">After-sales support & warranty assistance</li>
+            <li class="about-item">Custom designs tailored to your space</li>
           </ul>
           <div class="btn-group">
-            <a class="btn btn--primary" href="tel:+918978331333">Call Us</a>
-            <a class="btn btn--secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Follow on Instagram</a>
+            <a class="btn btn-primary" href="tel:+918978331333">Call Us</a>
+            <a class="btn btn-secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Follow on Instagram</a>
           </div>
         </div>
         <div class="reveal">
-          <img loading="lazy" class="about__image" src="./assets/about.jpg?q=80&w=1200&auto=format&fit=crop" alt="Furniture craftsman at work" width="600" height="420">
+          <img loading="lazy" decoding="async" class="about-img" src="./assets/about.jpg?q=80&w=1200&auto=format&fit=crop" alt="Furniture craftsman at work" width="1200" height="800">
         </div>
       </div>
     </div>
@@ -822,25 +320,32 @@
 
   <!-- Visit -->
   <section id="visit" class="section" aria-labelledby="visit-title">
-    <div class="page-width">
-      <div class="section-header reveal">
+    <div class="container">
+      <div class="sect-head reveal">
         <h2 class="h2" id="visit-title">Visit Our Store</h2>
-        <p class="section-header__subtitle">Vepagunta, Visakhapatnam — parking available.</p>
+        <p class="sect-sub">Vepagunta, Visakhapatnam — parking available.</p>
       </div>
-      <div class="grid grid--3">
-        <div class="info-card reveal">
-          <h3 class="info-card__title">Timings</h3>
-          <p class="info-card__text">Monday – Sunday<br>10:00 AM – 9:00 PM</p>
+
+      <div class="map-wrap reveal" aria-label="Map showing Ramadas Furniture Point location">
+        <iframe title="Ramadas Furniture Point on Google Maps"
+          loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.249522228169!2d83.2153968!3d17.7799664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3967a291264343%3A0x9e99ae57f5fe0b32!2sRAMADAS%20FURNITURE%20POINT!5e0!3m2!1sen!2sin!4v1762353804755!5m2!1sen!2sin"></iframe>
+      </div>
+
+      <div class="grid grid-auto" style="margin-top: var(--gap)">
+        <div class="info reveal">
+          <h3 class="info-title">Timings</h3>
+          <p class="info-text">Monday – Sunday<br>10:00 AM – 9:00 PM</p>
         </div>
-        <div class="info-card reveal">
-          <h3 class="info-card__title">Address</h3>
-          <p class="info-card__text">Ramadas Furniture Point<br>Vepagunta, Visakhapatnam<br>Andhra Pradesh</p>
+        <div class="info reveal">
+          <h3 class="info-title">Address</h3>
+          <p class="info-text">Ramadas Furniture Point<br>Vepagunta, Visakhapatnam<br>Andhra Pradesh</p>
         </div>
-        <div class="info-card reveal">
-          <h3 class="info-card__title">Get Here</h3>
+        <div class="info reveal">
+          <h3 class="info-title">Get Here</h3>
           <div class="btn-group">
-            <a class="btn btn--primary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps</a>
-            <a class="btn btn--secondary" href="https://wa.me/918978331333?text=Share%20location%20please" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-primary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps</a>
+            <a class="btn btn-secondary" href="https://wa.me/918978331333?text=Share%20location%20please" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
       </div>
@@ -849,25 +354,25 @@
 
   <!-- Contact -->
   <section id="contact" class="section" aria-labelledby="contact-title">
-    <div class="page-width">
-      <div class="section-header reveal">
+    <div class="container">
+      <div class="sect-head reveal">
         <h2 class="h2" id="contact-title">Contact</h2>
-        <p class="section-header__subtitle">Call, message, or drop by — we'll help you choose the right piece.</p>
+        <p class="sect-sub">Call, message, or drop by — we'll help you choose the right piece.</p>
       </div>
-      <div class="grid grid--2">
-        <div class="info-card reveal">
-          <h3 class="info-card__title">Reach Us</h3>
-          <ul class="info-card__list">
-            <li class="info-card__list-item"><a href="tel:+918978331333">Phone: 08978 331 333</a></li>
-            <li class="info-card__list-item"><a href="https://wa.me/918978331333" target="_blank" rel="noopener">WhatsApp Chat</a></li>
-            <li class="info-card__list-item"><a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram: @sanjaychgav</a></li>
-            <li class="info-card__list-item"><a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps Location</a></li>
+      <div class="grid grid-2">
+        <div class="info reveal">
+          <h3 class="info-title">Reach Us</h3>
+          <ul class="flist">
+            <li><a class="flink" href="tel:+918978331333">Phone: 08978 331 333</a></li>
+            <li><a class="flink" href="https://wa.me/918978331333" target="_blank" rel="noopener">WhatsApp Chat</a></li>
+            <li><a class="flink" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram: @sanjaychgav</a></li>
+            <li><a class="flink" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps Location</a></li>
           </ul>
         </div>
-        <div class="info-card reveal">
-          <h3 class="info-card__title">Quick Enquiry</h3>
-          <p class="info-card__text">Tap to start a WhatsApp chat with your furniture requirement. We typically respond within minutes during business hours.</p>
-          <a class="btn btn--primary mt-md" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20looking%20for..." target="_blank" rel="noopener">Start WhatsApp Chat</a>
+        <div class="info reveal">
+          <h3 class="info-title">Quick Enquiry</h3>
+          <p class="info-text">Tap to start a WhatsApp chat with your furniture requirement. We typically respond within minutes during business hours.</p>
+          <a class="btn btn-primary" style="margin-top:12px" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20looking%20for..." target="_blank" rel="noopener">Start WhatsApp Chat</a>
         </div>
       </div>
     </div>
@@ -875,148 +380,113 @@
 
   <!-- Footer -->
   <footer class="footer" role="contentinfo">
-    <div class="page-width">
-      <div class="footer__grid">
+    <div class="container">
+      <div class="fgrid">
         <div>
-          <div class="footer__brand-name">Ramadas Furniture Point</div>
+          <div class="f-brand">Ramadas Furniture Point</div>
           <p class="subdued">Premium furniture for modern Indian homes. Quality craftsmanship since establishment.</p>
-          <p class="subdued mt-sm">Vepagunta, Visakhapatnam<br>Andhra Pradesh, India</p>
+          <p class="subdued" style="margin-top:12px">Vepagunta, Visakhapatnam<br>Andhra Pradesh, India</p>
         </div>
         <div>
-          <h3 class="footer__section-title">Contact</h3>
-          <ul class="footer__list">
-            <li class="footer__list-item"><a href="tel:+918978331333" class="footer__link">08978 331 333</a></li>
-            <li class="footer__list-item"><a href="https://wa.me/918978331333" target="_blank" rel="noopener" class="footer__link">WhatsApp</a></li>
-            <li class="footer__list-item"><a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="footer__link">Instagram</a></li>
-            <li class="footer__list-item"><a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="footer__link">Get Directions</a></li>
+          <h3 class="f-title">Contact</h3>
+          <ul class="flist">
+            <li><a href="tel:+918978331333" class="flink">08978 331 333</a></li>
+            <li><a href="https://wa.me/918978331333" target="_blank" rel="noopener" class="flink">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="flink">Instagram</a></li>
+            <li><a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="flink">Get Directions</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer__section-title">Quick Links</h3>
-          <ul class="footer__list">
-            <li class="footer__list-item"><a href="#collections" class="footer__link">Collections</a></li>
-            <li class="footer__list-item"><a href="#about" class="footer__link">About</a></li>
-            <li class="footer__list-item"><a href="#visit" class="footer__link">Visit</a></li>
-            <li class="footer__list-item"><a href="#contact" class="footer__link">Contact</a></li>
+          <h3 class="f-title">Quick Links</h3>
+          <ul class="flist">
+            <li><a href="#collections" class="flink">Collections</a></li>
+            <li><a href="#about" class="flink">About</a></li>
+            <li><a href="#visit" class="flink">Visit</a></li>
+            <li><a href="#contact" class="flink">Contact</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer__copyright">
-        © <span id="year"></span> Ramadas Furniture Point. All rights reserved.
-      </div>
+      <div class="copy">© <span id="year"></span> Ramadas Furniture Point. All rights reserved.</div>
     </div>
   </footer>
 
+  <button id="toTop" aria-label="Back to top" style="position:fixed; right:16px; bottom:16px; inset-inline-end:16px; inset-block-end:16px; border:1px solid var(--line-2); background:var(--bg-elev); color:var(--ink); border-radius:999px; padding:10px 14px; box-shadow:var(--shadow-sm); cursor:pointer; display:none">↑</button>
+
   <script>
-    // Current year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile navigation toggle
-    const menuToggle = document.querySelector('[data-menu-toggle]');
-    const mobileNav = document.querySelector('[data-mobile]');
-    
-    if (menuToggle && mobileNav) {
-      menuToggle.addEventListener('click', () => {
-        const isHidden = mobileNav.hasAttribute('hidden');
-        if (isHidden) {
-          mobileNav.removeAttribute('hidden');
-        } else {
-          mobileNav.setAttribute('hidden', '');
-        }
-        menuToggle.setAttribute('aria-expanded', String(isHidden));
+    // Mobile nav toggle
+    const menuBtn = document.querySelector('[data-menu]');
+    const mnav = document.querySelector('[data-mnav]');
+    if (menuBtn && mnav) {
+      menuBtn.addEventListener('click', () => {
+        const hidden = mnav.hasAttribute('hidden');
+        hidden ? mnav.removeAttribute('hidden') : mnav.setAttribute('hidden', '');
+        menuBtn.setAttribute('aria-expanded', String(hidden));
       });
-
-      // Close mobile menu when link is clicked
-      mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNav.setAttribute('hidden', '');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
+      mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mnav.setAttribute('hidden','');
+        menuBtn.setAttribute('aria-expanded','false');
+      }));
     }
 
-    // Reveal on scroll animation
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    // Reveal on scroll (single observer reused)
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    const revealObserver = new IntersectionObserver((entries) => {
+    // Active nav highlight
+    const ids = ['home','collections','about','visit','contact'];
+    const links = Array.from(document.querySelectorAll('.nav a'));
+    const linkMap = new Map(links.map(l => [l.getAttribute('href'), l]));
+    const navIO = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          revealObserver.unobserve(entry.target);
+          links.forEach(a => a.setAttribute('aria-current','false'));
+          const href = `#${entry.target.id}`;
+          const current = linkMap.get(href);
+          if (current) current.setAttribute('aria-current','true');
         }
       });
-    }, observerOptions);
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    ids.forEach(id => { const s = document.getElementById(id); if (s) navIO.observe(s); });
 
-    document.querySelectorAll('.reveal').forEach(el => {
-      revealObserver.observe(el);
-    });
-
-    // Active navigation link highlighting
-    const sections = ['home', 'collections', 'about', 'visit', 'contact'];
-    const navLinks = document.querySelectorAll('.nav__link');
-    
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            link.classList.toggle('active', href === `#${entry.target.id}`);
-          });
-        }
-      });
-    }, {
-      rootMargin: '-40% 0px -55% 0px',
-      threshold: 0
-    });
-
-    sections.forEach(id => {
-      const section = document.getElementById(id);
-      if (section) navObserver.observe(section);
-    });
-
-    // Smooth scroll with offset for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-
+    // Smooth scroll with sticky header offset
+    const header = document.querySelector('.header');
+    const headerOffset = () => (header?.offsetHeight || 74) + 24;
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href'); if (!id || id === '#') return;
+        const target = document.querySelector(id); if (!target) return;
         e.preventDefault();
-        
-        const header = document.querySelector('.header');
-        const headerOffset = (header?.offsetHeight || 80) + 24;
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-
-        // Update URL without scrolling
-        history.pushState(null, '', targetId);
+        const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.pushState(null, '', id);
       });
     });
 
-    // Handle initial hash in URL on page load
+    // Handle initial hash
     if (window.location.hash) {
       setTimeout(() => {
-        const target = document.querySelector(window.location.hash);
-        if (target) {
-          const header = document.querySelector('.header');
-          const headerOffset = (header?.offsetHeight || 80) + 24;
-          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        const t = document.querySelector(window.location.hash);
+        if (t) {
+          const y = t.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }, 100);
     }
+
+    // Back to top button
+    const toTop = document.getElementById('toTop');
+    const topIO = new IntersectionObserver((entries) => {
+      const onTop = entries[0].isIntersecting;
+      toTop.style.display = onTop ? 'none' : 'inline-flex';
+    });
+    const home = document.getElementById('home');
+    if (home) topIO.observe(home);
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
-
