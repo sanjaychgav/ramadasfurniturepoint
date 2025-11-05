@@ -2,222 +2,845 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ramadas Furniture Point — Vepagunta, Visakhapatnam</title>
-  <meta name="description" content="Elegant sofas, cots, dining, wardrobes & custom pieces. Visit Ramadas Furniture Point, Vepagunta, Visakhapatnam.">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <meta name="theme-color" content="#09090b">
-  <meta property="og:title" content="Ramadas Furniture Point — Vepagunta, Visakhapatnam">
-  <meta property="og:description" content="Elegant sofas, cots, dining, wardrobes & custom pieces.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ramadas Furniture Point — Premium Furniture in Vepagunta, Visakhapatnam</title>
+  <meta name="description" content="Elegant sofas, cots, dining, wardrobes & custom furniture. Visit Ramadas Furniture Point in Vepagunta, Visakhapatnam for quality craftsmanship.">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛋️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* Fonts */
-    .font-serif { font-family: 'Georgia', 'Times New Roman', serif; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    /* ====== Enhanced Design System ====== */
+    :root {
+      --accent: #39ff88;
+      --accent-dark: #2dd670;
+      --glow: #00f0ff;
+      --bg: #0a0b0f;
+      --bg-elevated: #0f1117;
+      --card: #131820;
+      --card-hover: #1a1f2a;
+      --ink: #e6e9ef;
+      --ink-secondary: #b8bfc9;
+      --muted: #9aa1ad;
+      --line: #1a1d26;
+      --line-strong: #2b2f3a;
+      --header-h: 80px;
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-    /* Smooth scroll */
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    /* Simple reveal animation */
-    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.show { opacity: 1; transform: translateY(0); }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 24px);
+    }
 
-    /* Active link underline */
-    .nav-link.active { text-decoration: underline; text-underline-offset: 6px; }
+    body {
+      font: 400 16px/1.6 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: 
+        radial-gradient(80vw 80vh at 15% -10%, rgba(57, 255, 136, 0.06), transparent 70%),
+        radial-gradient(60vw 70vh at 85% -15%, rgba(0, 240, 255, 0.05), transparent 70%),
+        var(--bg);
+      background-attachment: fixed;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Typography */
+    .h1, .h2, .h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .h1 {
+      font-size: clamp(32px, 4vw, 56px);
+      margin: 0 0 12px;
+    }
+
+    .h2 {
+      font-size: clamp(26px, 3vw, 42px);
+      margin: 0 0 8px;
+    }
+
+    .h3 {
+      font-size: clamp(20px, 2.2vw, 28px);
+      margin: 0;
+    }
+
+    .body-large {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .subdued {
+      color: var(--muted);
+    }
+
+    /* Layout */
+    .page-width {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .section--hero {
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 56px 0;
+      }
+    }
+
+    /* Grid System */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid--2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .grid--3 {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    @media (min-width: 900px) {
+      .grid--2-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Button System */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #000;
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(57, 255, 136, 0.3);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 40px rgba(57, 255, 136, 0.4);
+    }
+
+    .btn--secondary {
+      background: var(--bg-elevated);
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+
+    .btn--secondary:hover {
+      background: var(--card);
+      border-color: var(--accent);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      padding: 6px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* Card System */
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--bg-elevated));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card__media {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card__media {
+      transform: scale(1.05);
+    }
+
+    .card__content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card__title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .card__description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    .card--feature {
+      padding: 28px;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(10, 11, 15, 0.8);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .header__bar {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Brand */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity 0.2s ease;
+    }
+
+    .brand:hover {
+      opacity: 0.9;
+    }
+
+    .brand__logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent), #0f0);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 24px;
+      color: #000;
+      box-shadow: 0 0 20px rgba(57, 255, 136, 0.4);
+    }
+
+    .brand__name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand__tagline {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Navigation */
+    .nav {
+      display: none;
+      gap: 4px;
+    }
+
+    .nav__link {
+      color: var(--ink-secondary);
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .nav__link:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav__link.active {
+      color: var(--accent);
+      background: rgba(57, 255, 136, 0.1);
+    }
+
+    @media (min-width: 900px) {
+      .nav {
+        display: flex;
+      }
+      .header__mobile-toggle {
+        display: none;
+      }
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header__mobile-toggle {
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .header__mobile-toggle:hover {
+      border-color: var(--accent);
+    }
+
+    .mobile-nav {
+      padding: 16px;
+    }
+
+    .mobile-nav[hidden] {
+      display: none;
+    }
+
+    .mobile-nav__menu {
+      background: var(--card);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      padding: 8px;
+    }
+
+    .mobile-nav__link {
+      display: block;
+      padding: 14px 16px;
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .mobile-nav__link:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-nav__actions {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid var(--line);
+      margin-top: 8px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      padding: 120px 0 80px;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(10, 11, 15, 0.4), transparent);
+    }
+
+    .hero__content {
+      max-width: 720px;
+      background: rgba(15, 17, 23, 0.85);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 65vh;
+        padding: 100px 0 60px;
+      }
+      .hero__content {
+        padding: 28px;
+      }
+    }
+
+    /* Section Headers */
+    .section-header {
+      max-width: 800px;
+      margin-bottom: 48px;
+    }
+
+    .section-header__subtitle {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* Collections Grid */
+    .collections-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    @media (max-width: 768px) {
+      .collections-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* About Section */
+    .about-grid {
+      align-items: center;
+    }
+
+    .about__image {
+      border-radius: var(--radius-lg);
+      height: 420px;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about__list {
+      list-style: none;
+      margin: 20px 0;
+      padding: 0;
+    }
+
+    .about__list-item {
+      padding: 12px 0;
+      padding-left: 28px;
+      position: relative;
+      color: var(--ink-secondary);
+    }
+
+    .about__list-item::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Info Cards */
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      border-color: var(--line-strong);
+      background: var(--card-hover);
+    }
+
+    .info-card__title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .info-card__text {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .info-card__list {
+      list-style: none;
+      margin: 16px 0 0;
+      padding: 0;
+    }
+
+    .info-card__list-item {
+      padding: 10px 0;
+      color: var(--ink-secondary);
+    }
+
+    .info-card__list-item a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .info-card__list-item a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 60px 0 32px;
+      margin-top: 80px;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer__section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .footer__brand-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer__list-item {
+      padding: 8px 0;
+    }
+
+    .footer__link {
+      color: var(--ink-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer__link:hover {
+      color: var(--accent);
+    }
+
+    .footer__copyright {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Starfield Animation */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 70% 60%, rgba(255, 255, 255, 0.25), transparent),
+        radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90% 20%, rgba(255, 255, 255, 0.25), transparent);
+      background-size: 250% 250%;
+      animation: starTwinkle 12s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accessibility & Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .stars {
+        animation: none;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus Styles */
+    *:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Utility Classes */
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-sm { margin-top: 16px; }
+    .mt-md { margin-top: 24px; }
+    .mt-lg { margin-top: 32px; }
   </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900">
-  <!-- Top strip -->
-  <div class="w-full bg-zinc-900 text-white text-sm">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
-      <span class="tracking-wide font-medium">Ramadas Furniture Point • Vepagunta, Visakhapatnam</span>
-      <div class="hidden sm:flex items-center gap-4">
-        <a href="tel:+918978331333" class="hover:underline">Call: 08978 331 333</a>
-        <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" class="hover:underline">WhatsApp</a>
-        <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" class="hover:underline">Directions</a>
-      </div>
-    </div>
-  </div>
+<body>
+  <div class="stars" aria-hidden="true"></div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full bg-zinc-900 text-white grid place-items-center font-bold">R</div>
-        <div class="leading-tight">
-          <div class="text-base font-serif tracking-tight">Ramadas Furniture Point</div>
-          <p class="text-[11px] text-zinc-600 -mt-0.5">Fine furniture • Custom builds</p>
+  <header class="header" role="banner">
+    <div class="page-width header__bar">
+      <a class="brand" href="#home" aria-label="Ramadas Furniture Point Home">
+        <div class="brand__logo" aria-hidden="true">R</div>
+        <div class="brand__meta">
+          <div class="brand__name">Ramadas Furniture Point</div>
+          <div class="brand__tagline">Fine furniture • Custom builds</div>
         </div>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#collections" class="nav-link hover:underline">Collections</a>
-        <a href="#about" class="nav-link hover:underline">About</a>
-        <a href="#visit" class="nav-link hover:underline">Visit</a>
-        <a href="#contact" class="nav-link hover:underline">Contact</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#collections" class="nav__link">Collections</a>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#visit" class="nav__link">Visit</a>
+        <a href="#contact" class="nav__link">Contact</a>
       </nav>
 
-      <!-- Mobile toggle -->
-      <button id="navToggle" class="md:hidden inline-flex items-center justify-center rounded-md border px-3 py-2"
-              aria-label="Toggle navigation" aria-expanded="false">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+      <div class="header__actions">
+        <a class="btn btn--ghost" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">WhatsApp</a>
+        <a class="btn btn--primary" href="tel:+918978331333">Call Now</a>
+        <button class="header__mobile-toggle" data-menu-toggle aria-label="Toggle navigation menu" aria-expanded="false">Menu</button>
+      </div>
     </div>
 
-    <!-- Mobile menu -->
-    <nav id="mobileNav" class="md:hidden hidden border-t bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-3 grid gap-2 text-sm">
-        <a href="#collections" class="nav-link block py-2">Collections</a>
-        <a href="#about" class="nav-link block py-2">About</a>
-        <a href="#visit" class="nav-link block py-2">Visit</a>
-        <a href="#contact" class="nav-link block py-2">Contact</a>
-        <div class="pt-2 flex items-center gap-3">
-          <a href="tel:+918978331333" class="px-3 py-2 rounded-lg border hover:bg-zinc-50">Call</a>
-          <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" class="px-3 py-2 rounded-lg border hover:bg-zinc-50">WhatsApp</a>
-          <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" class="px-3 py-2 rounded-lg border hover:bg-zinc-50">Directions</a>
+    <nav class="mobile-nav" data-mobile hidden aria-label="Mobile navigation">
+      <div class="mobile-nav__menu">
+        <a href="#collections" class="mobile-nav__link">Collections</a>
+        <a href="#about" class="mobile-nav__link">About</a>
+        <a href="#visit" class="mobile-nav__link">Visit</a>
+        <a href="#contact" class="mobile-nav__link">Contact</a>
+        <div class="mobile-nav__actions">
+          <a class="btn btn--secondary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Directions</a>
+          <a class="btn btn--secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-transparent z-10"></div>
-    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop"
-         alt="Elegant furniture showroom" class="w-full h-[64vh] object-cover">
-    <div class="absolute inset-0 z-20 flex items-end">
-      <div class="max-w-7xl mx-auto px-4 pb-10">
-        <div class="bg-white/90 backdrop-blur p-6 md:p-8 rounded-2xl shadow-xl max-w-2xl reveal">
-          <h1 class="text-3xl md:text-4xl font-serif leading-tight">Where craftsmanship meets comfort.</h1>
-          <p class="mt-3 text-zinc-700">Explore sofas, cots, dining, wardrobes and bespoke pieces — curated for modern Indian homes.</p>
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" class="px-5 py-3 rounded-xl bg-zinc-900 text-white hover:opacity-90">Get Directions</a>
-            <a href="tel:+918978331333" class="px-5 py-3 rounded-xl border border-zinc-900 hover:bg-zinc-900 hover:text-white">Call Now</a>
-            <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" class="px-5 py-3 rounded-xl border border-zinc-300 hover:bg-zinc-100">WhatsApp Us</a>
-            <a href="https://www.instagram.com/sanjaychgav" target="_blank" class="px-5 py-3 rounded-xl border border-zinc-300 hover:bg-zinc-100">Instagram</a>
-          </div>
+  <section id="home" class="section section--hero hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="page-width">
+      <div class="hero__content reveal">
+        <div class="badge">Vepagunta • Visakhapatnam</div>
+        <h1 class="h1">Where craftsmanship meets comfort.</h1>
+        <p class="subdued body-large">Explore sofas, cots, dining, wardrobes and bespoke pieces — curated for modern Indian homes.</p>
+        <div class="btn-group">
+          <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="btn btn--primary">Get Directions</a>
+          <a href="tel:+918978331333" class="btn btn--secondary">Call Now</a>
+          <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" class="btn btn--secondary">WhatsApp Us</a>
+          <a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="btn btn--secondary">Instagram</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Collections -->
-  <section id="collections" class="max-w-7xl mx-auto px-4 py-16">
-    <div class="reveal">
-      <h2 class="text-2xl md:text-3xl font-serif">Collections</h2>
-      <p class="mt-2 text-zinc-600">Popular categories available ready-to-ship and custom-made.</p>
-    </div>
-
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card -->
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1582582429416-3e4f62f1328d?q=80&w=1200&auto=format&fit=crop" alt="Sofas">
-        <div class="p-5">
-          <div class="font-semibold">Sofas & Recliners</div>
-          <p class="text-sm text-zinc-600 mt-1">Fabric • Leatherette • L-shaped • Recliners</p>
-        </div>
-      </a>
-
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1200&auto=format&fit=crop" alt="Beds and Cots">
-        <div class="p-5">
-          <div class="font-semibold">Cots & Mattresses</div>
-          <p class="text-sm text-zinc-600 mt-1">King • Queen • Storage • Orthopedic</p>
-        </div>
-      </a>
-
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1614292253218-c6c0d6a7b3d2?q=80&w=1200&auto=format&fit=crop" alt="Dining">
-        <div class="p-5">
-          <div class="font-semibold">Dining & Chairs</div>
-          <p class="text-sm text-zinc-600 mt-1">4/6/8-seater • Solid wood • Modern</p>
-        </div>
-      </a>
-
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Wardrobes" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1624814275844-6db1a3dec8b4?q=80&w=1200&auto=format&fit=crop" alt="Wardrobes">
-        <div class="p-5">
-          <div class="font-semibold">Wardrobes</div>
-          <p class="text-sm text-zinc-600 mt-1">Swing • Sliding • Modular</p>
-        </div>
-      </a>
-
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop" alt="TV units">
-        <div class="p-5">
-          <div class="font-semibold">TV Units & Storage</div>
-          <p class="text-sm text-zinc-600 mt-1">Wall units • Console • Shelving</p>
-        </div>
-      </a>
-
-      <a class="reveal group block rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank">
-        <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.02] transition"
-             src="https://images.unsplash.com/photo-1505691723518-36a5ac3b1a5d?q=80&w=1200&auto=format&fit=crop" alt="Custom furniture">
-        <div class="p-5">
-          <div class="font-semibold">Custom Builds</div>
-          <p class="text-sm text-zinc-600 mt-1">Made-to-size • Finish of choice</p>
-        </div>
-      </a>
+  <section id="collections" class="section" aria-labelledby="collections-title">
+    <div class="page-width">
+      <div class="section-header reveal">
+        <h2 class="h2" id="collections-title">Collections</h2>
+        <p class="section-header__subtitle">Popular categories available ready-to-ship and custom-made.</p>
+      </div>
+      <div class="grid collections-grid">
+        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank" rel="noopener">
+          <img loading="lazy" class="card__media" src="./sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern sofas and recliners" width="400" height="260">
+          <div class="card__content">
+            <h3 class="card__title">Sofas & Recliners</h3>
+            <p class="card__description">Fabric • Leatherette • L-shaped • Recliners</p>
+          </div>
+        </a>
+        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank" rel="noopener">
+          <img loading="lazy" class="card__media" src="./cot.jpg?q=80&w=1200&auto=format&fit=crop" alt="Elegant beds and cots" width="400" height="260">
+          <div class="card__content">
+            <h3 class="card__title">Cots & Mattresses</h3>
+            <p class="card__description">King • Queen • Storage • Orthopedic</p>
+          </div>
+        </a>
+        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank" rel="noopener">
+          <img loading="lazy" class="card__media" src="./dining.jpg?q=80&w=1200&auto=format&fit=crop" alt="Dining tables and chairs" width="400" height="260">
+          <div class="card__content">
+            <h3 class="card__title">Dining & Chairs</h3>
+            <p class="card__description">4/6/8-seater • Solid wood • Modern</p>
+          </div>
+        </a>
+        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank" rel="noopener">
+          <img loading="lazy" class="card__media" src="./custom-sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern TV units" width="400" height="260">
+          <div class="card__content">
+            <h3 class="card__title">TV Units & Storage</h3>
+            <p class="card__description">Wall units • Console • Shelving</p>
+          </div>
+        </a>
+        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank" rel="noopener">
+          <img loading="lazy" class="card__media" src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=1200&auto=format&fit=crop" alt="Custom furniture designs" width="400" height="260">
+          <div class="card__content">
+            <h3 class="card__title">Custom Builds</h3>
+            <p class="card__description">Made-to-size • Finish of choice</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="border-t bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-16">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="page-width">
+      <div class="grid grid--2-cols about-grid">
         <div class="reveal">
-          <h2 class="text-2xl md:text-3xl font-serif">About Us</h2>
-          <p class="mt-3 text-zinc-700 leading-relaxed">
-            At Ramadas Furniture Point, we blend solid craftsmanship with practical comfort. From ready stock to
-            bespoke projects, we guide you on materials, finishes, and durability, and offer hassle-free delivery and installation.
+          <h2 class="h2" id="about-title">About Us</h2>
+          <p class="subdued mt-sm">
+            At Ramadas Furniture Point, we blend solid craftsmanship with practical comfort. From ready stock to bespoke projects, we guide you on materials, finishes, and durability, and offer hassle-free delivery and installation.
           </p>
-          <ul class="mt-5 space-y-2 text-zinc-700">
-            <li>• Expert guidance on wood, laminates, and fabrics</li>
-            <li>• On-time delivery & installation</li>
-            <li>• After-sales support & warranty assistance</li>
+          <ul class="about__list">
+            <li class="about__list-item">Expert guidance on wood, laminates, and fabrics</li>
+            <li class="about__list-item">On-time delivery & installation</li>
+            <li class="about__list-item">After-sales support & warranty assistance</li>
+            <li class="about__list-item">Custom designs tailored to your space</li>
           </ul>
-          <div class="mt-6 flex gap-3">
-            <a href="tel:+918978331333" class="px-4 py-2 rounded-lg border border-zinc-900 hover:bg-zinc-900 hover:text-white">Call</a>
-            <a href="https://www.instagram.com/sanjaychgav" target="_blank" class="px-4 py-2 rounded-lg border hover:bg-zinc-50">Instagram</a>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="tel:+918978331333">Call Us</a>
+            <a class="btn btn--secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Follow on Instagram</a>
           </div>
         </div>
-        <img loading="lazy" class="reveal w-full h-72 md:h-96 object-cover rounded-2xl border"
-             src="https://images.unsplash.com/photo-1519710884008-dab1349f3f9a?q=80&w=1200&auto=format&fit=crop" alt="Workshop and wood finishing">
+        <div class="reveal">
+          <img loading="lazy" class="about__image" src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1200&auto=format&fit=crop" alt="Furniture craftsman at work" width="600" height="420">
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Visit -->
-  <section id="visit" class="bg-zinc-50">
-    <div class="max-w-7xl mx-auto px-4 py-16">
-      <div class="reveal">
-        <h2 class="text-2xl md:text-3xl font-serif">Visit Our Store</h2>
-        <p class="mt-2 text-zinc-600">Vepagunta, Visakhapatnam — parking available.</p>
+  <section id="visit" class="section" aria-labelledby="visit-title">
+    <div class="page-width">
+      <div class="section-header reveal">
+        <h2 class="h2" id="visit-title">Visit Our Store</h2>
+        <p class="section-header__subtitle">Vepagunta, Visakhapatnam — parking available.</p>
       </div>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <div class="reveal rounded-2xl border bg-white p-5">
-          <div class="font-semibold">Timings</div>
-          <p class="text-sm text-zinc-600 mt-2">Mon–Sun: 10:00 am – 9:00 pm</p>
+      <div class="grid grid--3">
+        <div class="info-card reveal">
+          <h3 class="info-card__title">Timings</h3>
+          <p class="info-card__text">Monday – Sunday<br>10:00 AM – 9:00 PM</p>
         </div>
-        <div class="reveal rounded-2xl border bg-white p-5">
-          <div class="font-semibold">Address</div>
-          <p class="text-sm text-zinc-600 mt-2">Ramadas Furniture Point, Vepagunta, Visakhapatnam</p>
+        <div class="info-card reveal">
+          <h3 class="info-card__title">Address</h3>
+          <p class="info-card__text">Ramadas Furniture Point<br>Vepagunta, Visakhapatnam<br>Andhra Pradesh</p>
         </div>
-        <div class="reveal rounded-2xl border bg-white p-5">
-          <div class="font-semibold">Get Here</div>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" class="px-3 py-2 rounded-lg bg-zinc-900 text-white hover:opacity-90">Google Maps</a>
-            <a href="https://wa.me/918978331333?text=Share%20location%20please" target="_blank" class="px-3 py-2 rounded-lg border hover:bg-zinc-50">WhatsApp Us</a>
+        <div class="info-card reveal">
+          <h3 class="info-card__title">Get Here</h3>
+          <div class="btn-group">
+            <a class="btn btn--primary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps</a>
+            <a class="btn btn--secondary" href="https://wa.me/918978331333?text=Share%20location%20please" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
       </div>
@@ -225,98 +848,174 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="border-t bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-16">
-      <div class="reveal">
-        <h2 class="text-2xl md:text-3xl font-serif">Contact</h2>
-        <p class="mt-2 text-zinc-600">Call, message, or drop by — we’ll help you choose the right piece.</p>
+  <section id="contact" class="section" aria-labelledby="contact-title">
+    <div class="page-width">
+      <div class="section-header reveal">
+        <h2 class="h2" id="contact-title">Contact</h2>
+        <p class="section-header__subtitle">Call, message, or drop by — we'll help you choose the right piece.</p>
       </div>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="reveal rounded-2xl border bg-white p-5">
-          <div class="font-semibold">Reach Us</div>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li><a class="underline" href="tel:+918978331333">Phone: 08978 331 333</a></li>
-            <li><a class="underline" href="https://wa.me/918978331333" target="_blank">WhatsApp Chat</a></li>
-            <li><a class="underline" href="https://www.instagram.com/sanjaychgav" target="_blank">Instagram: @sanjaychgav</a></li>
-            <li><a class="underline" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank">Google Maps</a></li>
+      <div class="grid grid--2">
+        <div class="info-card reveal">
+          <h3 class="info-card__title">Reach Us</h3>
+          <ul class="info-card__list">
+            <li class="info-card__list-item"><a href="tel:+918978331333">Phone: 08978 331 333</a></li>
+            <li class="info-card__list-item"><a href="https://wa.me/918978331333" target="_blank" rel="noopener">WhatsApp Chat</a></li>
+            <li class="info-card__list-item"><a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Instagram: @sanjaychgav</a></li>
+            <li class="info-card__list-item"><a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps Location</a></li>
           </ul>
         </div>
-
-        <div class="reveal rounded-2xl border bg-white p-5">
-          <div class="font-semibold">Quick Enquiry</div>
-          <p class="text-sm text-zinc-600 mt-2">Tap to start a WhatsApp chat with your requirement.</p>
-          <a href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20looking%20for..."
-             target="_blank"
-             class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 text-white hover:opacity-90">
-            Start WhatsApp Chat
-          </a>
+        <div class="info-card reveal">
+          <h3 class="info-card__title">Quick Enquiry</h3>
+          <p class="info-card__text">Tap to start a WhatsApp chat with your furniture requirement. We typically respond within minutes during business hours.</p>
+          <a class="btn btn--primary mt-md" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20looking%20for..." target="_blank" rel="noopener">Start WhatsApp Chat</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm">
-      <div>
-        <div class="text-lg font-serif">Ramadas Furniture Point</div>
-        <p class="mt-2 text-zinc-600">Vepagunta, Visakhapatnam</p>
+  <footer class="footer" role="contentinfo">
+    <div class="page-width">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">Ramadas Furniture Point</div>
+          <p class="subdued">Premium furniture for modern Indian homes. Quality craftsmanship since establishment.</p>
+          <p class="subdued mt-sm">Vepagunta, Visakhapatnam<br>Andhra Pradesh, India</p>
+        </div>
+        <div>
+          <h3 class="footer__section-title">Contact</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="tel:+918978331333" class="footer__link">08978 331 333</a></li>
+            <li class="footer__list-item"><a href="https://wa.me/918978331333" target="_blank" rel="noopener" class="footer__link">WhatsApp</a></li>
+            <li class="footer__list-item"><a href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener" class="footer__link">Instagram</a></li>
+            <li class="footer__list-item"><a href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener" class="footer__link">Get Directions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__section-title">Quick Links</h3>
+          <ul class="footer__list">
+            <li class="footer__list-item"><a href="#collections" class="footer__link">Collections</a></li>
+            <li class="footer__list-item"><a href="#about" class="footer__link">About</a></li>
+            <li class="footer__list-item"><a href="#visit" class="footer__link">Visit</a></li>
+            <li class="footer__list-item"><a href="#contact" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <div class="font-semibold">Contact</div>
-        <ul class="mt-2 space-y-2">
-          <li><a class="underline" href="tel:+918978331333">08978 331 333</a></li>
-          <li><a class="underline" href="https://wa.me/918978331333" target="_blank">WhatsApp</a></li>
-          <li><a class="underline" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank">Google Maps</a></li>
-          <li><a class="underline" href="https://www.instagram.com/sanjaychgav" target="_blank">Instagram</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="font-semibold">Quick Links</div>
-        <ul class="mt-2 space-y-2">
-          <li><a class="hover:underline" href="#collections">Collections</a></li>
-          <li><a class="hover:underline" href="#about">About</a></li>
-          <li><a class="hover:underline" href="#visit">Visit</a></li>
-          <li><a class="hover:underline" href="#contact">Contact</a></li>
-        </ul>
+      <div class="footer__copyright">
+        © <span id="year"></span> Ramadas Furniture Point. All rights reserved.
       </div>
     </div>
-    <div class="text-center text-xs text-zinc-500 pb-8">© <span id="year"></span> Ramadas Furniture Point. All rights reserved.</div>
   </footer>
 
   <script>
-    // Year
+    // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile nav
-    const navToggle = document.getElementById('navToggle');
-    const mobileNav = document.getElementById('mobileNav');
-    navToggle?.addEventListener('click', () => {
-      const open = mobileNav.classList.toggle('hidden') ? false : true;
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    // Close on link click (mobile)
-    mobileNav?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobileNav.classList.add('hidden'));
-    });
+    // Mobile navigation toggle
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const mobileNav = document.querySelector('[data-mobile]');
+    
+    if (menuToggle && mobileNav) {
+      menuToggle.addEventListener('click', () => {
+        const isHidden = mobileNav.hasAttribute('hidden');
+        if (isHidden) {
+          mobileNav.removeAttribute('hidden');
+        } else {
+          mobileNav.setAttribute('hidden', '');
+        }
+        menuToggle.setAttribute('aria-expanded', String(isHidden));
+      });
 
-    // Reveal on scroll (tiny IO)
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      // Close mobile menu when link is clicked
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.setAttribute('hidden', '');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
-    // Active nav link highlighting
-    const sections = ['home','collections','about','visit','contact'].map(id => document.getElementById(id));
-    const links = document.querySelectorAll('.nav-link');
-    const activate = (hash) => {
-      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + hash));
+    // Reveal on scroll animation
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
     };
-    const spy = new IntersectionObserver((ents) => {
-      ents.forEach(e => { if (e.isIntersecting) activate(e.target.id); });
-    }, { rootMargin: '-50% 0px -45% 0px', threshold: 0.01 });
-    sections.forEach(s => s && spy.observe(s));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Active navigation link highlighting
+    const sections = ['home', 'collections', 'about', 'visit', 'contact'];
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.toggle('active', href === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) navObserver.observe(section);
+    });
+
+    // Smooth scroll with offset for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+
+        e.preventDefault();
+        
+        const header = document.querySelector('.header');
+        const headerOffset = (header?.offsetHeight || 80) + 24;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Update URL without scrolling
+        history.pushState(null, '', targetId);
+      });
+    });
+
+    // Handle initial hash in URL on page load
+    if (window.location.hash) {
+      setTimeout(() => {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const header = document.querySelector('.header');
+          const headerOffset = (header?.offsetHeight || 80) + 24;
+          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    }
   </script>
 </body>
 </html>
