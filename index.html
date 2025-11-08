@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ramadas Furniture Point — Premium Furniture in Vepagunta, Visakhapatnam</title>
   <meta name="description" content="Elegant sofas, cots, dining, wardrobes & custom furniture. Visit Ramadas Furniture Point in Vepagunta, Visakhapatnam for quality craftsmanship.">
-  <meta name="theme-color" content="#0a0b0f">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Ramadas Furniture Point — Premium Furniture in Vepagunta, Visakhapatnam">
   <meta property="og:description" content="Sofas, cots, dining, wardrobes & custom furniture. Quality craftsmanship.">
-  <!-- Added: Social preview image -->
   <meta property="og:image" content="./assets/background.jpg">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon (emoji data URI stays) -->
+  <!-- Favicon (emoji data URI) -->
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🛋️&lt;/text&gt;&lt;/svg&gt;">
 
   <!-- Fonts -->
@@ -26,223 +28,159 @@
 
   <style>
     /* =========================
-       Design Tokens
+       Minimal, modern, responsive theme
        ========================= */
-    
-    /* Prevent any horizontal scroll on mobiles */
-    html, body { max-width: 100%; overflow-x: hidden; }
-    /* Ensure grid children can shrink on small screens */
-    .grid > * { min-width: 0; }
 
-    /* Ensure images/video never overflow on small screens */
-    img, video, svg { max-width: 100%; height: auto; display:block; }
+    /* Reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:400 16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Arial,sans-serif;}
 
-    :root {
-      --accent: #39ff88;
-      --accent-2: #00f0ff;
-      --bg: #0a0b0f;
-      --bg-elev: #0f1117;
-      --card: #131820;
-      --card-hover: #1a1f2a;
-      --ink: #e6e9ef;
-      --ink-2: #b8bfc9;
-      /* Lightened muted color for better contrast */
-      --muted: #aeb6c2;
-      --line: #1a1d26;
-      --line-2: #2b2f3a;
-      --h: 74px; /* header height */
-      --r-sm: 12px;
-      --r-md: 16px;
-      --r-lg: 24px;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
-      --shadow-md: 0 6px 20px rgba(0,0,0,.35);
-      --shadow-lg: 0 14px 40px rgba(0,0,0,.45);
-      --ease: cubic-bezier(.4,0,.2,1);
-      --gap: 24px;
-      --container: 1280px;
+    /* Tokens */
+    :root{
+      --bg:#0b0d10;
+      --bg-elev:#11151b;
+      --card:#141a22;
+      --line: #1f2730;
+      --ink:#e7eaf0;
+      --ink-2:#b9c0cb;
+      --muted:#aab3bf;
+      --accent:#39ff88;   /* soft neon mint */
+      --accent-2:#7ad7ff; /* ice blue */
+      --radius-sm:12px;--radius-md:16px;--radius-lg:24px;
+      --shadow-sm:0 2px 10px rgba(0,0,0,.25);
+      --shadow-md:0 10px 30px rgba(0,0,0,.35);
+      --shadow-lg:0 18px 48px rgba(0,0,0,.45);
+      --container: 1200px;
+      --gap:24px; --h:72px;
     }
 
-    @media (prefers-color-scheme: light) {
-      :root { color-scheme: dark light; }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f8fafc; --bg-elev:#ffffff; --card:#ffffff; --line:#e6eaf0; --ink:#0b1220; --ink-2:#415066; --muted:#6b7788; }
+      body{background:linear-gradient(180deg,#f7f9fb,#fdfefe)}
     }
 
-    /* Reset + base */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font: 400 16px/1.6 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--ink);
+    /* Base */
+    body{
+      color:var(--ink);
       background:
-        radial-gradient(80vw 80vh at 15% -10%, rgba(57,255,136,.06), transparent 70%),
-        radial-gradient(60vw 70vh at 85% -15%, rgba(0,240,255,.05), transparent 70%),
+        radial-gradient(80vw 80vh at 10% -10%, rgba(57,255,136,.06), transparent 70%),
+        radial-gradient(60vw 80vh at 90% -20%, rgba(122,215,255,.05), transparent 70%),
         var(--bg);
       background-attachment: fixed;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
+    img,video,svg{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    .section{padding:clamp(56px,7vw,88px) 0}
 
-    .h1, .h2, .h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
-    }
-    .h1 { font-size: clamp(32px, 7vw, 56px); margin: 0 0 12px; }
-    .h2 { font-size: clamp(24px, 5.5vw, 42px); margin: 0 0 8px; }
-    .h3 { font-size: clamp(18px, 3.5vw, 28px); margin: 0; }
-    .body-lg { font-size: clamp(15px, 2.8vw, 18px); line-height: 1.7; }
-    .subdued { color: var(--muted); }
+    /* Type */
+    .h1,.h2,.h3{font-family:"Playfair Display",Georgia,serif;letter-spacing:-.02em;line-height:1.2}
+    .h1{font-size:clamp(32px,6.2vw,54px);margin:0 0 10px}
+    .h2{font-size:clamp(24px,4.8vw,40px);margin:0 0 8px}
+    .h3{font-size:clamp(18px,3.2vw,26px);margin:0}
+    .body-lg{font-size:clamp(15px,2.5vw,18px)}
+    .subdued{color:var(--muted)}
 
-    /* Layout helpers */
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; width:100%; }
-    .section { padding: clamp(56px, 7vw, 80px) 0; position: relative; }
-    .grid { display: grid; gap: var(--gap); }
-    .grid-auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
-    .grid-2 { grid-template-columns: 1fr; }
-    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    /* Grid */
+    .grid{display:grid;gap:var(--gap)}
+    .grid-auto{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+    .grid-2{grid-template-columns:1fr}
+    @media (min-width: 900px){.grid-2{grid-template-columns:1fr 1fr}}
 
     /* Buttons */
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 20px; border:1px solid transparent; border-radius:var(--r-md); font-weight:600; font-size:15px; text-decoration:none; white-space:nowrap; transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease); cursor:pointer; }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), #2dd670); color:#000; border-color: var(--accent); box-shadow: 0 0 24px rgba(57,255,136,.25);} 
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(57,255,136,.35);} 
-    .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(255,255,255,.15); }
-    .btn-ghost:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.3); }
-    .btn-secondary { background: var(--bg-elev); color: var(--ink); border-color: var(--line-2); }
-    .btn-secondary:hover { background: var(--card); border-color: var(--accent); }
-    .btn-group { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
-
-    /* Make buttons wrap nicely on phones */
-    @media (max-width: 560px){
-      .btn { padding:12px 16px; font-size:14px; }
-      .btn-group .btn { flex: 1 1 calc(50% - 12px); justify-content:center; }
-    }
-
-    /* Badges */
-    .badge { display:inline-flex; padding:6px 14px; border:1px solid var(--line-2); border-radius:999px; font-size:13px; font-weight:600; letter-spacing:.05em; color: var(--accent); text-transform:uppercase; margin-bottom:16px; }
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid transparent;border-radius:14px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),#21d86c);color:#05160c;box-shadow:0 10px 22px rgba(57,255,136,.25)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(57,255,136,.35)}
+    .btn-ghost{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.12)}
+    .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.28)}
+    .btn-secondary{background:var(--bg-elev);color:var(--ink);border-color:var(--line)}
+    .btn-secondary:hover{border-color:var(--accent)}
+    .btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    @media (max-width:560px){.btn{padding:12px 14px;font-size:14px}.btn-group .btn{flex:1 1 calc(50% - 12px);justify-content:center}}
 
     /* Cards */
-    .card { background: linear-gradient(180deg, var(--card), var(--bg-elev)); border:1px solid var(--line); border-radius: var(--r-lg); overflow:hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease); height:100%; display:flex; flex-direction:column; }
-    .card:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: var(--shadow-lg); }
-    .card-media { width:100%; height: clamp(180px, 38vw, 260px); object-fit:cover; display:block; transition: transform .6s ease; }
-    .card:hover .card-media { transform: scale(1.05); }
-    .card-body { padding:20px; display:flex; flex-direction:column; gap:8px; }
-    .card-title { font-size:19px; font-weight:700; color:var(--ink); }
-    .card-desc { color:var(--muted); font-size:14px; margin-top:auto; }
+    .card{background:linear-gradient(180deg,var(--card),var(--bg-elev));border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.12);box-shadow:var(--shadow-lg)}
+    .card-media{width:100%;height:clamp(180px,38vw,240px);object-fit:cover}
+    .card-body{padding:18px;display:flex;flex-direction:column;gap:6px}
+    .card-title{font-weight:800;font-size:19px}
+    .card-desc{color:var(--ink-2);font-size:14px;margin-top:auto}
 
     /* Header */
-    .header { position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(180%) blur(16px); background: rgba(10,11,15,.78); border-bottom:1px solid var(--line); box-shadow: var(--shadow-sm); }
-    .bar { height: var(--h); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .brand { display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; min-width:0; }
-    .brand:hover { opacity:.9; }
-    .logo { width:40px; height:40px; border-radius:50%; background: radial-gradient(circle at 30% 30%, var(--accent), #0f0); display:grid; place-items:center; font-weight:800; font-size:22px; color:#000; box-shadow: 0 0 20px rgba(57,255,136,.35); flex:0 0 auto; }
-    .brand-name { font-family:'Playfair Display', Georgia, serif; font-size:18px; font-weight:800; line-height:1.2; }
-    .brand-tag { font-size:12px; color: var(--muted); margin-top:2px; }
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;background:var(--accent);color:#000;padding:8px 12px;border-radius:10px;z-index:1000}
 
-    .nav { display:none; gap:4px; }
-    .nav a { color: var(--ink-2); text-decoration:none; padding:10px 14px; border-radius: var(--r-sm); font-weight:600; font-size:15px; transition: background .2s var(--ease), color .2s var(--ease); }
-    .nav a:hover { color: var(--ink); background: rgba(255,255,255,.05); }
-    .nav a[aria-current] { color: var(--accent); background: rgba(57,255,136,.1); }
-    .hdr-actions { display:flex; align-items:center; gap:8px; margin-left:auto; }
-    .menu-btn { background: transparent; border: 1px solid var(--line-2); color: var(--ink); padding: 10px 14px; border-radius: var(--r-sm); cursor:pointer; }
-    .menu-btn:hover { border-color: var(--accent); }
+    .header{position:sticky;top:0;z-index:100;background:rgba(11,13,16,.75);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+    @media (prefers-color-scheme: light){.header{background:rgba(255,255,255,.7)}}
+    .bar{height:var(--h);display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none}
+    .brand:hover{opacity:.95}
+    .logo{inline-size:40px;block-size:40px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(65% 65% at 30% 30%,var(--accent),#1cef72);color:#03150b;font-weight:900;box-shadow:0 0 18px rgba(57,255,136,.30)}
+    .brand-name{font-family:"Playfair Display",serif;font-size:18px;font-weight:900;line-height:1}
+    .brand-tag{font-size:12px;color:var(--ink-2)}
 
-    @media (min-width: 900px){ .nav{display:flex} .menu-btn{display:none} }
+    nav.nav{display:none;gap:4px}
+    nav.nav a{color:var(--ink-2);text-decoration:none;padding:10px 12px;border-radius:10px;font-weight:700}
+    nav.nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+    nav.nav a[aria-current]{color:var(--accent);background:rgba(57,255,136,.10)}
+    .hdr-actions{margin-left:auto;display:flex;gap:8px}
+    .menu-btn{background:transparent;border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:12px}
+    .menu-btn:hover{border-color:var(--accent)}
+    @media (min-width:900px){nav.nav{display:flex}.menu-btn{display:none}}
 
-    .mnav { padding: 12px 16px; }
-    .mnav[hidden] { display:none; }
-    .mnav-menu { background: var(--card); border: 1px solid var(--line-2); border-radius: var(--r-lg); padding: 8px; }
-    .mnav a { display:block; padding:14px 16px; color: var(--ink); text-decoration:none; border-radius: var(--r-sm); }
-    .mnav a:hover { background: rgba(255,255,255,.05); }
-    .mnav-actions { display:flex; gap:8px; padding:12px; border-top:1px solid var(--line); margin-top:8px; flex-wrap:wrap; }
+    .mnav{padding:12px 16px}
+    .mnav[hidden]{display:none}
+    .mnav-menu{background:var(--bg-elev);border:1px solid var(--line);border-radius:18px;padding:8px}
+    .mnav a{display:block;padding:14px 16px;color:var(--ink);text-decoration:none;border-radius:12px}
+    .mnav a:hover{background:rgba(255,255,255,.06)}
+    .mnav-actions{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);margin-top:8px;flex-wrap:wrap}
 
     /* Hero */
-    .hero { min-height: 70svh; display:flex; align-items:center; position:relative; isolation:isolate; padding: clamp(96px, 12vw, 140px) 0 72px; }
-    .hero-bg { position:absolute; inset:0; z-index:-2; }
-    .hero-bg img { width:100%; height:100%; object-fit:cover; }
-    .hero-ov { position:absolute; inset:0; z-index:-1; background: linear-gradient(135deg, rgba(0,0,0,.7), rgba(10,11,15,.4), transparent); }
-    .hero-box { max-width: 720px; background: rgba(15,17,23,.82); border:1px solid var(--line-2); border-radius: var(--r-lg); padding: clamp(20px, 4vw, 40px); backdrop-filter: blur(12px); box-shadow: var(--shadow-lg); }
+    .hero{min-height:70svh;display:flex;align-items:center;position:relative;isolation:isolate;padding:clamp(96px,12vw,140px) 0 72px}
+    .hero-bg{position:absolute;inset:0;z-index:-2}
+    .hero-bg img{width:100%;height:100%;object-fit:cover}
+    .hero-ov{position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(0,0,0,.65),rgba(11,13,16,.35),transparent)}
+    .hero-box{max-width:720px;background:rgba(17,21,27,.82);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:clamp(20px,4vw,40px);backdrop-filter:blur(10px);box-shadow:var(--shadow-lg)}
 
-    /* Section header */
-    .sect-head { max-width: 800px; margin: 0 0 36px; }
-    .sect-sub { color: var(--muted); margin-top: 12px; font-size: 17px; line-height: 1.7; }
-
-    /* Collections */
-    .collections { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
-
-    /* About */
-    .about-img { border-radius: var(--r-lg); inline-size: 100%; block-size: clamp(240px, 45vw, 420px); object-fit: cover; box-shadow: var(--shadow-md); }
-    .about-list { list-style:none; margin:20px 0; padding:0; }
-    .about-item { position:relative; padding:12px 0 12px 28px; color: var(--ink-2); }
-    .about-item::before { content: "✓"; position:absolute; inset-inline-start:0; color: var(--accent); font-weight:800; }
-
-    /* Info cards */
-    .info { background: var(--card); border:1px solid var(--line); border-radius: var(--r-lg); padding: 24px; transition: background .25s var(--ease), border-color .25s var(--ease); }
-    .info:hover { border-color: var(--line-2); background: var(--card-hover); }
-    .info-title { font-size:20px; font-weight:700; margin-bottom: 10px; color: var(--ink); }
-    .info-text { color: var(--muted); line-height: 1.7; }
-
-    /* Footer */
-    .footer { border-top:1px solid var(--line); padding: 56px 0 32px; margin-top: 64px; }
-    .fgrid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 24px; margin-bottom: 32px; }
-    .f-title { font-size:18px; font-weight:700; margin-bottom: 10px; color: var(--ink); }
-    .f-brand { font-family:'Playfair Display', Georgia, serif; font-size:24px; font-weight:800; margin-bottom:8px; }
-    .flist { list-style:none; margin:0; padding:0; }
-    .flist li { padding:8px 0; }
-    .flink { color: var(--ink-2); text-decoration:none; }
-    .flink:hover { color: var(--accent); }
-    .copy { text-align:center; color: var(--muted); font-size: 14px; padding-top: 24px; border-top:1px solid var(--line); }
-
-    /* Stars (decor only) */
-    .stars{ position:fixed; inset:0; pointer-events:none; background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.3), transparent), radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.25), transparent), radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.2), transparent), radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,.25), transparent); background-size:250% 250%; animation: twinkle 12s linear infinite; z-index:0; }
-    @keyframes twinkle { 0%,100%{opacity:.6} 50%{opacity:1} }
-
-    /* Reveal animation */
-    .reveal { opacity:0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-    .reveal.show { opacity:1; transform:none; }
+    /* Info */
+    .info{background:var(--bg-elev);border:1px solid var(--line);border-radius:18px;padding:20px;transition:background .2s ease,border-color .2s ease}
+    .info:hover{border-color:rgba(255,255,255,.14)}
+    .info-title{font-size:20px;font-weight:800;margin:0 0 8px}
+    .info-text{color:var(--muted);line-height:1.7}
 
     /* Map */
-    .map-wrap { 
-      margin-top: 12px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: var(--shadow-md);
-    }
-    .map-wrap iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
-    @supports not (aspect-ratio: 1 / 1) {
-      .map-wrap { position: relative; }
-      .map-wrap::before { content: ""; display: block; padding-top: 56.25%; }
-      .map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
-    }
+    .map-wrap{margin-top:12px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--bg-elev);box-shadow:var(--shadow-md)}
+    .map-wrap iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+    @supports not (aspect-ratio: 1/1){.map-wrap{position:relative}.map-wrap::before{content:"";display:block;padding-top:56.25%}.map-wrap iframe{position:absolute;inset:0;width:100%;height:100%}}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--line);padding:56px 0 32px;margin-top:64px}
+    .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:24px}
+    .f-title{font-size:18px;font-weight:800;margin:0 0 8px}
+    .f-brand{font-family:"Playfair Display",serif;font-size:24px;font-weight:900;margin-bottom:8px}
+    .flist{list-style:none;margin:0;padding:0}
+    .flist li{padding:8px 0}
+    .flink{color:var(--ink-2);text-decoration:none}
+    .flink:hover{color:var(--accent)}
+    .copy{text-align:center;color:var(--muted);font-size:14px;padding-top:24px;border-top:1px solid var(--line)}
 
     /* Utilities */
-    .text-center{ text-align:center; }
-    /* Native anchor offset to avoid JS calc */
-    section { scroll-margin-top: calc(var(--h) + 24px); }
+    .text-center{text-align:center}
+    section{scroll-margin-top:calc(var(--h) + 24px)}
 
-    /* A11y */
-    *:focus-visible { outline: 2px solid var(--accent); outline-offset:2px; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity:1; transform:none; transition:none; }
-      .stars { animation: none; }
-      * { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-    }
-    
-    /* Mobile enhancements */
-    @media (max-width: 768px) {
-      /* Mobile browsers often ignore fixed backgrounds; avoid jumps */
-      body { background-attachment: scroll; }
-      .container { padding: 0 16px; }
-      .hero { min-height: 60vh; padding: 96px 0 56px; }
-      .sect-sub { font-size: 16px; }
-      /* Lighter GPU cost on phones */
-      .hero-box { box-shadow: var(--shadow-md); backdrop-filter: blur(8px); }
-      .stars { display:none; }
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
     }
 
-    /* Use dynamic viewport height when supported to avoid URL bar issues */
-    @supports (height: 100dvh) {
-      .hero { min-height: 70dvh; }
+    /* Mobile tweaks */
+    @media (max-width:768px){
+      body{background-attachment:scroll}
+      .container{padding:0 16px}
+      .hero{min-height:60vh;padding:96px 0 56px}
+      .hero-box{box-shadow:var(--shadow-md)}
     }
 
   </style>
@@ -250,25 +188,25 @@
   <!-- LocalBusiness JSON-LD for SEO -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FurnitureStore",
-    "name": "Ramadas Furniture Point",
-    "image": "./assets/background.jpg",
-    "telephone": "+91-89783-31333",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Vepagunta",
-      "addressRegion": "Andhra Pradesh",
-      "addressCountry": "IN"
+    "@context":"https://schema.org",
+    "@type":"FurnitureStore",
+    "name":"Ramadas Furniture Point",
+    "image":"./assets/background.jpg",
+    "telephone":"+91-89783-31333",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Vepagunta",
+      "addressRegion":"Andhra Pradesh",
+      "addressCountry":"IN"
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": 17.7799664, "longitude": 83.2153968 },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "10:00",
-      "closes": "21:00"
+    "geo":{"@type":"GeoCoordinates","latitude":17.7799664,"longitude":83.2153968},
+    "openingHoursSpecification":[{
+      "@type":"OpeningHoursSpecification",
+      "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens":"10:00",
+      "closes":"21:00"
     }],
-    "sameAs": [
+    "sameAs":[
       "https://maps.app.goo.gl/7ppJihQoi94WjZrm8",
       "https://www.instagram.com/sanjaychgav"
     ]
@@ -276,7 +214,7 @@
   </script>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
+  <a class="skip" href="#home">Skip to content</a>
 
   <!-- Header -->
   <header class="header" role="banner">
@@ -288,18 +226,22 @@
           <div class="brand-tag">Fine furniture • Custom builds</div>
         </div>
       </a>
+
       <nav class="nav" aria-label="Primary navigation">
         <a href="#collections">Collections</a>
         <a href="#visit">Visit</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+
       <div class="hdr-actions">
         <a class="btn btn-ghost" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20interested%20in%20your%20furniture." target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">WhatsApp</a>
         <a class="btn btn-primary" href="tel:+918978331333">Call Now</a>
         <button class="menu-btn" data-menu aria-label="Toggle navigation menu" aria-expanded="false">Menu</button>
       </div>
     </div>
+
+    <!-- Mobile nav -->
     <nav class="mnav" data-mnav hidden aria-label="Mobile navigation">
       <div class="mnav-menu">
         <a href="#collections">Collections</a>
@@ -315,17 +257,14 @@
   </header>
 
   <!-- Hero -->
-  <section id="home" class="section hero" aria-label="Hero">
+  <main id="home" class="section hero" aria-label="Hero">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Converted background to real <img> for proper LCP & priority -->
-      <img src="./assets/background.jpg"
-           srcset="./assets/background.jpg 1600w, ./assets/background.jpg 2400w"
-           sizes="100vw" fetchpriority="high" alt="Showroom background">
+      <img src="./assets/background.jpg" srcset="./assets/background.jpg 1600w, ./assets/background.jpg 2400w" sizes="100vw" fetchpriority="high" alt="Showroom background">
     </div>
     <div class="hero-ov" aria-hidden="true"></div>
     <div class="container">
-      <div class="hero-box reveal">
-        <div class="badge">Vepagunta • Visakhapatnam</div>
+      <div class="hero-box">
+        <div class="subdued" style="font-weight:700;letter-spacing:.08em;text-transform:uppercase">Vepagunta • Visakhapatnam</div>
         <h1 class="h1">Where craftsmanship meets comfort.</h1>
         <p class="subdued body-lg">Explore sofas, cots, dining, wardrobes and bespoke pieces — curated for modern Indian homes.</p>
         <div class="btn-group">
@@ -336,56 +275,51 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- Collections -->
   <section id="collections" class="section" aria-labelledby="collections-title">
     <div class="container">
-      <div class="sect-head reveal">
+      <div style="max-width:800px;margin:0 0 28px">
         <h2 class="h2" id="collections-title">Collections</h2>
-        <p class="sect-sub">Popular categories available ready-to-ship and custom-made.</p>
+        <p class="subdued body-lg">Popular categories available ready-to-ship and custom-made.</p>
       </div>
-      <div class="grid collections">
-        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/sofa.jpg" 
-               srcset="./assets/sofa.jpg 600w, ./assets/sofa.jpg 900w, ./assets/sofa.jpg 1200w"
-               sizes="(max-width: 700px) 100vw, 300px" alt="Modern sofas and recliners" width="1200" height="800">
+
+      <div class="grid grid-auto">
+        <a class="card" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/sofa.jpg" srcset="./assets/sofa.jpg 600w, ./assets/sofa.jpg 900w, ./assets/sofa.jpg 1200w" sizes="(max-width: 700px) 100vw, 300px" alt="Modern sofas and recliners" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Sofas & Recliners</h3>
             <p class="card-desc">Fabric • Leatherette • L-shaped • Recliners</p>
           </div>
         </a>
-        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/cot.jpg" 
-               srcset="./assets/cot.jpg 600w, ./assets/cot.jpg 900w, ./assets/cot.jpg 1200w"
-               sizes="(max-width: 700px) 100vw, 300px" alt="Elegant beds and cots" width="1200" height="800">
+
+        <a class="card" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/cot.jpg" srcset="./assets/cot.jpg 600w, ./assets/cot.jpg 900w, ./assets/cot.jpg 1200w" sizes="(max-width: 700px) 100vw, 300px" alt="Elegant beds and cots" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Cots & Mattresses</h3>
             <p class="card-desc">King • Queen • Storage • Orthopedic</p>
           </div>
         </a>
-        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/dining.jpg" 
-               srcset="./assets/dining.jpg 600w, ./assets/dining.jpg 900w, ./assets/dining.jpg 1200w"
-               sizes="(max-width: 700px) 100vw, 300px" alt="Dining tables and chairs" width="1200" height="800">
+
+        <a class="card" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/dining.jpg" srcset="./assets/dining.jpg 600w, ./assets/dining.jpg 900w, ./assets/dining.jpg 1200w" sizes="(max-width: 700px) 100vw, 300px" alt="Dining tables and chairs" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Dining & Chairs</h3>
             <p class="card-desc">4/6/8-seater • Solid wood • Modern</p>
           </div>
         </a>
-        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/tv-unit.jpg" 
-               srcset="./assets/tv-unit.jpg 600w, ./assets/tv-unit.jpg 900w, ./assets/tv-unit.jpg 1200w"
-               sizes="(max-width: 700px) 100vw, 300px" alt="Modern TV units" width="1200" height="800">
+
+        <a class="card" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/tv-unit.jpg" srcset="./assets/tv-unit.jpg 600w, ./assets/tv-unit.jpg 900w, ./assets/tv-unit.jpg 1200w" sizes="(max-width: 700px) 100vw, 300px" alt="Modern TV units" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">TV Units & Storage</h3>
             <p class="card-desc">Wall units • Console • Shelving</p>
           </div>
         </a>
-        <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/custom-sofa.jpg" 
-               srcset="./assets/custom-sofa.jpg 600w, ./assets/custom-sofa.jpg 900w, ./assets/custom-sofa.jpg 1200w"
-               sizes="(max-width: 700px) 100vw, 300px" alt="Custom furniture designs" width="1200" height="800">
+
+        <a class="card" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank" rel="noopener">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/custom-sofa.jpg" srcset="./assets/custom-sofa.jpg 600w, ./assets/custom-sofa.jpg 900w, ./assets/custom-sofa.jpg 1200w" sizes="(max-width: 700px) 100vw, 300px" alt="Custom furniture designs" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Custom Builds</h3>
             <p class="card-desc">Made-to-size • Finish of choice</p>
@@ -395,31 +329,28 @@
     </div>
   </section>
 
-
   <!-- Visit -->
   <section id="visit" class="section" aria-labelledby="visit-title">
     <div class="container">
-      <div class="sect-head reveal">
+      <div style="max-width:800px;margin:0 0 28px">
         <h2 class="h2" id="visit-title">Visit Our Store</h2>
-        <p class="sect-sub">Vepagunta, Visakhapatnam — parking available.</p>
+        <p class="subdued body-lg">Vepagunta, Visakhapatnam — parking available.</p>
       </div>
 
-      <div class="map-wrap reveal" aria-label="Map showing Ramadas Furniture Point location">
-        <iframe title="Ramadas Furniture Point on Google Maps"
-          loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.249522228169!2d83.2153968!3d17.7799664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3967a291264343%3A0x9e99ae57f5fe0b32!2sRAMADAS%20FURNITURE%20POINT!5e0!3m2!1sen!2sin!4v1762353804755!5m2!1sen!2sin"></iframe>
+      <div class="map-wrap" aria-label="Map showing Ramadas Furniture Point location">
+        <iframe title="Ramadas Furniture Point on Google Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.249522228169!2d83.2153968!3d17.7799664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3967a291264343%3A0x9e99ae57f5fe0b32!2sRAMADAS%20FURNITURE%20POINT!5e0!3m2!1sen!2sin!4v1762353804755!5m2!1sen!2sin"></iframe>
       </div>
 
       <div class="grid grid-auto" style="margin-top: var(--gap)">
-        <div class="info reveal">
+        <div class="info">
           <h3 class="info-title">Timings</h3>
           <p class="info-text">Monday – Sunday<br>10:00 AM – 9:00 PM</p>
         </div>
-        <div class="info reveal">
+        <div class="info">
           <h3 class="info-title">Address</h3>
           <p class="info-text">Ramadas Furniture Point<br>Vepagunta, Visakhapatnam<br>Andhra Pradesh</p>
         </div>
-        <div class="info reveal">
+        <div class="info">
           <h3 class="info-title">Get Here</h3>
           <div class="btn-group">
             <a class="btn btn-primary" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps</a>
@@ -429,46 +360,41 @@
       </div>
     </div>
   </section>
-  
-  
+
   <!-- About -->
   <section id="about" class="section" aria-labelledby="about-title">
     <div class="container">
       <div class="grid grid-2" style="align-items:center">
-        <div class="reveal">
+        <div>
           <h2 class="h2" id="about-title">About Us</h2>
           <p class="subdued" style="margin-top:12px">At Ramadas Furniture Point, we blend solid craftsmanship with practical comfort. From ready stock to bespoke projects, we guide you on materials, finishes, and durability, and offer hassle-free delivery and installation.</p>
-          <ul class="about-list">
-            <li class="about-item">Expert guidance on wood, laminates, and fabrics</li>
-            <li class="about-item">On-time delivery & installation</li>
-            <li class="about-item">After-sales support & warranty assistance</li>
-            <li class="about-item">Custom designs tailored to your space</li>
+          <ul style="list-style:none;margin:18px 0;padding:0;color:var(--ink-2)">
+            <li style="position:relative;padding:10px 0 10px 26px"><span style="position:absolute;left:0;color:var(--accent);font-weight:900">✓</span> Expert guidance on wood, laminates, and fabrics</li>
+            <li style="position:relative;padding:10px 0 10px 26px"><span style="position:absolute;left:0;color:var(--accent);font-weight:900">✓</span> On-time delivery & installation</li>
+            <li style="position:relative;padding:10px 0 10px 26px"><span style="position:absolute;left:0;color:var(--accent);font-weight:900">✓</span> After-sales support & warranty assistance</li>
+            <li style="position:relative;padding:10px 0 10px 26px"><span style="position:absolute;left:0;color:var(--accent);font-weight:900">✓</span> Custom designs tailored to your space</li>
           </ul>
           <div class="btn-group">
             <a class="btn btn-primary" href="tel:+918978331333">Call Us</a>
             <a class="btn btn-secondary" href="https://www.instagram.com/sanjaychgav" target="_blank" rel="noopener">Follow on Instagram</a>
           </div>
         </div>
-        <div class="reveal">
-          <img loading="lazy" decoding="async" class="about-img" src="./assets/about.jpg"
-               srcset="./assets/about.jpg 800w, ./assets/about.jpg 1200w"
-               sizes="(max-width: 900px) 100vw, 50vw" alt="Furniture craftsman at work" width="1200" height="800">
+        <div>
+          <img loading="lazy" decoding="async" style="border-radius:20px;inline-size:100%;block-size:clamp(240px,45vw,420px);object-fit:cover;box-shadow:var(--shadow-md)" src="./assets/about.jpg" srcset="./assets/about.jpg 800w, ./assets/about.jpg 1200w" sizes="(max-width: 900px) 100vw, 50vw" alt="Furniture craftsman at work" width="1200" height="800">
         </div>
       </div>
     </div>
   </section>
 
-  
-
   <!-- Contact -->
   <section id="contact" class="section" aria-labelledby="contact-title">
     <div class="container">
-      <div class="sect-head reveal">
+      <div style="max-width:800px;margin:0 0 28px">
         <h2 class="h2" id="contact-title">Contact</h2>
-        <p class="sect-sub">Call, message, or drop by — we'll help you choose the right piece.</p>
+        <p class="subdued body-lg">Call, message, or drop by — we'll help you choose the right piece.</p>
       </div>
       <div class="grid grid-2">
-        <div class="info reveal">
+        <div class="info">
           <h3 class="info-title">Reach Us</h3>
           <ul class="flist">
             <li><a class="flink" href="tel:+918978331333">Phone: 08978 331 333</a></li>
@@ -477,7 +403,7 @@
             <li><a class="flink" href="https://maps.app.goo.gl/7ppJihQoi94WjZrm8" target="_blank" rel="noopener">Google Maps Location</a></li>
           </ul>
         </div>
-        <div class="info reveal">
+        <div class="info">
           <h3 class="info-title">Quick Enquiry</h3>
           <p class="info-text">Tap to start a WhatsApp chat with your furniture requirement. We typically respond within minutes during business hours.</p>
           <a class="btn btn-primary" style="margin-top:12px" href="https://wa.me/918978331333?text=Hi%20Ramadas%20Furniture%20Point%2C%20I%27m%20looking%20for..." target="_blank" rel="noopener">Start WhatsApp Chat</a>
@@ -518,7 +444,7 @@
     </div>
   </footer>
 
-  <button id="toTop" aria-label="Back to top" style="position:fixed; right:16px; bottom:16px; inset-inline-end:16px; inset-block-end:16px; border:1px solid var(--line-2); background:var(--bg-elev); color:var(--ink); border-radius:999px; padding:10px 14px; box-shadow:var(--shadow-sm); cursor:pointer; display:none">↑</button>
+  <button id="toTop" aria-label="Back to top" style="position:fixed;right:16px;bottom:16px;border:1px solid var(--line);background:var(--bg-elev);color:var(--ink);border-radius:999px;padding:10px 14px;box-shadow:var(--shadow-sm);cursor:pointer;display:none">↑</button>
 
   <script>
     // Year
@@ -539,14 +465,8 @@
       }));
     }
 
-    // Reveal on scroll (single observer reused)
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // Active nav highlight (use aria-current only on the current link)
-    const ids = ['home','collections','about','visit','contact'];
+    // Active nav highlight
+    const ids = ['home','collections','visit','about','contact'];
     const links = Array.from(document.querySelectorAll('.nav a'));
     const linkMap = new Map(links.map(l => [l.getAttribute('href'), l]));
     const navIO = new IntersectionObserver((entries) => {
@@ -558,10 +478,10 @@
           if (current) current.setAttribute('aria-current','page');
         }
       });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    }, { rootMargin: '-40% 0px -55% 0px' });
     ids.forEach(id => { const s = document.getElementById(id); if (s) navIO.observe(s); });
 
-    // Smooth scroll (native offset aided by CSS scroll-margin-top)
+    // Smooth hash scroll (CSS scroll-margin-top handles offset)
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href'); if (!id || id === '#') return;
@@ -572,7 +492,7 @@
       });
     });
 
-    // Handle initial hash (use native offset)
+    // Handle initial hash
     if (window.location.hash) {
       setTimeout(() => {
         const t = document.querySelector(window.location.hash);
@@ -580,7 +500,7 @@
       }, 100);
     }
 
-    // Back to top button
+    // Back to top
     const toTop = document.getElementById('toTop');
     const topIO = new IntersectionObserver((entries) => {
       const onTop = entries[0].isIntersecting;
