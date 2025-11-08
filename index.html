@@ -9,11 +9,21 @@
   <meta name="color-scheme" content="dark">
   <meta property="og:title" content="Ramadas Furniture Point — Premium Furniture in Vepagunta, Visakhapatnam">
   <meta property="og:description" content="Sofas, cots, dining, wardrobes & custom furniture. Quality craftsmanship.">
+  <!-- Added: Social preview image -->
+  <meta property="og:image" content="./assets/background.jpg">
   <meta property="og:type" content="website">
+
+  <!-- Favicon (emoji data URI stays) -->
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🛋️&lt;/text&gt;&lt;/svg&gt;">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Preload LCP hero image for faster paint -->
+  <link rel="preload" as="image" href="./assets/background.jpg" imagesrcset="./assets/background.jpg 1600w, ./assets/background.jpg 2400w" imagesizes="100vw" fetchpriority="high">
+
   <style>
     /* =========================
        Design Tokens
@@ -36,7 +46,8 @@
       --card-hover: #1a1f2a;
       --ink: #e6e9ef;
       --ink-2: #b8bfc9;
-      --muted: #9aa1ad;
+      /* Lightened muted color for better contrast */
+      --muted: #aeb6c2;
       --line: #1a1d26;
       --line-2: #2b2f3a;
       --h: 74px; /* header height */
@@ -128,7 +139,7 @@
     .nav { display:none; gap:4px; }
     .nav a { color: var(--ink-2); text-decoration:none; padding:10px 14px; border-radius: var(--r-sm); font-weight:600; font-size:15px; transition: background .2s var(--ease), color .2s var(--ease); }
     .nav a:hover { color: var(--ink); background: rgba(255,255,255,.05); }
-    .nav a[aria-current="true"] { color: var(--accent); background: rgba(57,255,136,.1); }
+    .nav a[aria-current] { color: var(--accent); background: rgba(57,255,136,.1); }
     .hdr-actions { display:flex; align-items:center; gap:8px; margin-left:auto; }
     .menu-btn { background: transparent; border: 1px solid var(--line-2); color: var(--ink); padding: 10px 14px; border-radius: var(--r-sm); cursor:pointer; }
     .menu-btn:hover { border-color: var(--accent); }
@@ -144,7 +155,8 @@
 
     /* Hero */
     .hero { min-height: 70svh; display:flex; align-items:center; position:relative; isolation:isolate; padding: clamp(96px, 12vw, 140px) 0 72px; }
-    .hero-bg { position:absolute; inset:0; z-index:-2; background-image:url('./assets/background.jpg?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center; }
+    .hero-bg { position:absolute; inset:0; z-index:-2; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; }
     .hero-ov { position:absolute; inset:0; z-index:-1; background: linear-gradient(135deg, rgba(0,0,0,.7), rgba(10,11,15,.4), transparent); }
     .hero-box { max-width: 720px; background: rgba(15,17,23,.82); border:1px solid var(--line-2); border-radius: var(--r-lg); padding: clamp(20px, 4vw, 40px); backdrop-filter: blur(12px); box-shadow: var(--shadow-lg); }
 
@@ -195,11 +207,7 @@
       background: var(--card);
       box-shadow: var(--shadow-md);
     }
-
-    /* Preferred (modern) */
     .map-wrap iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
-
-    /* Fallback for browsers without aspect-ratio */
     @supports not (aspect-ratio: 1 / 1) {
       .map-wrap { position: relative; }
       .map-wrap::before { content: ""; display: block; padding-top: 56.25%; }
@@ -208,6 +216,8 @@
 
     /* Utilities */
     .text-center{ text-align:center; }
+    /* Native anchor offset to avoid JS calc */
+    section { scroll-margin-top: calc(var(--h) + 24px); }
 
     /* A11y */
     *:focus-visible { outline: 2px solid var(--accent); outline-offset:2px; }
@@ -222,14 +232,12 @@
     @media (max-width: 768px) {
       /* Mobile browsers often ignore fixed backgrounds; avoid jumps */
       body { background-attachment: scroll; }
-
       .container { padding: 0 16px; }
-
-      /* Shorter hero on phones + tighter spacing */
       .hero { min-height: 60vh; padding: 96px 0 56px; }
-
-      /* Scale headings for narrow viewports (already clamped above) */
       .sect-sub { font-size: 16px; }
+      /* Lighter GPU cost on phones */
+      .hero-box { box-shadow: var(--shadow-md); backdrop-filter: blur(8px); }
+      .stars { display:none; }
     }
 
     /* Use dynamic viewport height when supported to avoid URL bar issues */
@@ -238,6 +246,34 @@
     }
 
   </style>
+
+  <!-- LocalBusiness JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FurnitureStore",
+    "name": "Ramadas Furniture Point",
+    "image": "./assets/background.jpg",
+    "telephone": "+91-89783-31333",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vepagunta",
+      "addressRegion": "Andhra Pradesh",
+      "addressCountry": "IN"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 17.7799664, "longitude": 83.2153968 },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "21:00"
+    }],
+    "sameAs": [
+      "https://maps.app.goo.gl/7ppJihQoi94WjZrm8",
+      "https://www.instagram.com/sanjaychgav"
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="stars" aria-hidden="true"></div>
@@ -280,7 +316,12 @@
 
   <!-- Hero -->
   <section id="home" class="section hero" aria-label="Hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <!-- Converted background to real <img> for proper LCP & priority -->
+      <img src="./assets/background.jpg"
+           srcset="./assets/background.jpg 1600w, ./assets/background.jpg 2400w"
+           sizes="100vw" fetchpriority="high" alt="Showroom background">
+    </div>
     <div class="hero-ov" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-box reveal">
@@ -306,35 +347,45 @@
       </div>
       <div class="grid collections">
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Sofas" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern sofas and recliners" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/sofa.jpg" 
+               srcset="./assets/sofa.jpg 600w, ./assets/sofa.jpg 900w, ./assets/sofa.jpg 1200w"
+               sizes="(max-width: 700px) 100vw, 300px" alt="Modern sofas and recliners" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Sofas & Recliners</h3>
             <p class="card-desc">Fabric • Leatherette • L-shaped • Recliners</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Beds%20and%20Cots" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/cot.jpg?q=80&w=1200&auto=format&fit=crop" alt="Elegant beds and cots" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/cot.jpg" 
+               srcset="./assets/cot.jpg 600w, ./assets/cot.jpg 900w, ./assets/cot.jpg 1200w"
+               sizes="(max-width: 700px) 100vw, 300px" alt="Elegant beds and cots" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Cots & Mattresses</h3>
             <p class="card-desc">King • Queen • Storage • Orthopedic</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Dining%20Sets" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/dining.jpg?q=80&w=1200&auto=format&fit=crop" alt="Dining tables and chairs" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/dining.jpg" 
+               srcset="./assets/dining.jpg 600w, ./assets/dining.jpg 900w, ./assets/dining.jpg 1200w"
+               sizes="(max-width: 700px) 100vw, 300px" alt="Dining tables and chairs" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Dining & Chairs</h3>
             <p class="card-desc">4/6/8-seater • Solid wood • Modern</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20TV%20Units" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/tv-unit.jpg?q=80&w=1200&auto=format&fit=crop" alt="Modern TV units" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/tv-unit.jpg" 
+               srcset="./assets/tv-unit.jpg 600w, ./assets/tv-unit.jpg 900w, ./assets/tv-unit.jpg 1200w"
+               sizes="(max-width: 700px) 100vw, 300px" alt="Modern TV units" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">TV Units & Storage</h3>
             <p class="card-desc">Wall units • Console • Shelving</p>
           </div>
         </a>
         <a class="card reveal" href="https://wa.me/918978331333?text=I%27m%20interested%20in%20Custom%20Furniture" target="_blank" rel="noopener">
-          <img loading="lazy" decoding="async" class="card-media" src="./assets/custom-sofa.jpg?q=80&w=1200&auto=format&fit=crop" alt="Custom furniture designs" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="card-media" src="./assets/custom-sofa.jpg" 
+               srcset="./assets/custom-sofa.jpg 600w, ./assets/custom-sofa.jpg 900w, ./assets/custom-sofa.jpg 1200w"
+               sizes="(max-width: 700px) 100vw, 300px" alt="Custom furniture designs" width="1200" height="800">
           <div class="card-body">
             <h3 class="card-title">Custom Builds</h3>
             <p class="card-desc">Made-to-size • Finish of choice</p>
@@ -399,7 +450,9 @@
           </div>
         </div>
         <div class="reveal">
-          <img loading="lazy" decoding="async" class="about-img" src="./assets/about.jpg?q=80&w=1200&auto=format&fit=crop" alt="Furniture craftsman at work" width="1200" height="800">
+          <img loading="lazy" decoding="async" class="about-img" src="./assets/about.jpg"
+               srcset="./assets/about.jpg 800w, ./assets/about.jpg 1200w"
+               sizes="(max-width: 900px) 100vw, 50vw" alt="Furniture craftsman at work" width="1200" height="800">
         </div>
       </div>
     </div>
@@ -492,44 +545,38 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Active nav highlight
+    // Active nav highlight (use aria-current only on the current link)
     const ids = ['home','collections','about','visit','contact'];
     const links = Array.from(document.querySelectorAll('.nav a'));
     const linkMap = new Map(links.map(l => [l.getAttribute('href'), l]));
     const navIO = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          links.forEach(a => a.setAttribute('aria-current','false'));
+          links.forEach(a => a.removeAttribute('aria-current'));
           const href = `#${entry.target.id}`;
           const current = linkMap.get(href);
-          if (current) current.setAttribute('aria-current','true');
+          if (current) current.setAttribute('aria-current','page');
         }
       });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
     ids.forEach(id => { const s = document.getElementById(id); if (s) navIO.observe(s); });
 
-    // Smooth scroll with sticky header offset
-    const header = document.querySelector('.header');
-    const headerOffset = () => (header?.offsetHeight || 74) + 24;
+    // Smooth scroll (native offset aided by CSS scroll-margin-top)
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href'); if (!id || id === '#') return;
         const target = document.querySelector(id); if (!target) return;
         e.preventDefault();
-        const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset();
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         history.pushState(null, '', id);
       });
     });
 
-    // Handle initial hash
+    // Handle initial hash (use native offset)
     if (window.location.hash) {
       setTimeout(() => {
         const t = document.querySelector(window.location.hash);
-        if (t) {
-          const y = t.getBoundingClientRect().top + window.pageYOffset - headerOffset();
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
     }
 
